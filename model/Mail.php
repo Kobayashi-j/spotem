@@ -1,8 +1,4 @@
 <?php
-require '../vendor/autoload.php';
-
-use Dotenv\Dotenv;
-
 // PHPMailer のソースファイルの読み込み
 require_once 'PHPMailer-6.5.0/src/Exception.php';
 require_once 'PHPMailer-6.5.0/src/PHPMailer.php';
@@ -19,9 +15,6 @@ class Mail
     function __construct(string $email)
     {
         $this->email = $email;
-
-        $dotenv = Dotenv::createImmutable(dirname(__DIR__, 1));
-        $dotenv->load();
     }
     /**
      * メール送信
