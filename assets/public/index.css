@@ -1,0 +1,9 @@
+.ori-font {
+  font-family: "AcademyEngravedLetPlain, Academy Engraved LET";
+  /*font-family: 'Academy Engraved LET', sans-serif;*/
+}
+
+section {
+  background-image: url("../img/background.png");
+  background-size: cover;
+}

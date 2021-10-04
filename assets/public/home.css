@@ -1,0 +1,24 @@
+.myicon {
+    margin: 30px ;
+    float: left;
+}
+
+.myicon img{
+    border-radius: 50%;
+    width:  100px; 
+    height: 100px;
+
+}
+
+header{
+    font-size: 4em;
+}
+
+.content small{
+    float: right;
+}
+
+.contents .content { 
+    display: flex;
+    flex-basis: auto;
+}

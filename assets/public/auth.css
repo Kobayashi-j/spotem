@@ -1,0 +1,42 @@
+/*
+html {
+    background-color: rgb(34, 39, 46);
+}*/
+input:not(input[type="button"]) {
+    background-color: transparent;
+}
+
+input::placeholder {
+    color: gray!important;
+    font-size: 16px;
+}
+
+input::placeholder {
+    color: gray!important;
+    font-size: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+    input::placeholder {
+        font-size: 16px;
+    }
+}
+
+input:not(input[type="button"]) {
+    color: white;
+}
+
+._back:hover {
+    cursor: pointer;
+    color: #257953 !important;
+}
+
+._content {
+    position: absolute;
+    width: 100%;
+    max-width: 640px;
+    min-height: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

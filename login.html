@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja" class="has-background-black">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/public/bulma.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link rel="stylesheet" href="assets/public/auth.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="assets/public/login.js" type="module" defer></script>
+    <title>ログイン / Spotem</title>
+</head>
+
+<body>
+    <div class="px-4 _content">
+        <a href="/" class="_back has-text-success is-inline">
+            <span class="icon is-small is-right">
+                <i class="fas fa-arrow-left"></i>
+            </span>
+            &nbsp;戻る
+        </a>
+        <p class="is-size-4 has-text-weight-bold has-text-white mb-5 has-text-centered">Spotemにログイン</p>
+        <p class="help is-warning has-text-centered mb-5"></p>
+        <form action="controller/auth.php" method="post">
+            <div class="field mb-5">
+                <div class="control has-icons-left">
+                    <input class="input is-medium is-rounded" type="text" name="unique" placeholder="ユーザーIDまたはメール" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-at"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field mb-5">
+                <div class="control has-icons-left">
+                    <input class="input is-medium is-rounded" type="password" name="password" placeholder="パスワード（8文字以上の半角英数）" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </div>
+            </div>
+            <button class="input button is-rounded is-success" type="submit">ログイン</button>
+        </form>
+    </div>
+</body>
+
+</html>
