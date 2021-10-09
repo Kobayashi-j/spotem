@@ -1,7 +1,7 @@
 <?php
 require_once "controller/autoload.php";
 
-$view = "top.html";
+$view = "view/top.html";
 
 $uri = $_SERVER['REQUEST_URI'];
 $uri = substr($uri, 1);
@@ -10,16 +10,11 @@ $route1 = $split_uri[0];
 // $route2 = $split_uri[1];
 
 switch ($route1) {
-    case 'top':
-        break;
     case 'home':
-        $view = "home.php";
-        break;
+    case 'search':
     case 'new':
-        $view = "new.php";
-        break;
     case 'login':
-        $view = "login.php";
+        $view = "view/" . $route1 . ".php";
         break;
     case 'signup':
         $tmp = $split_uri;
@@ -35,10 +30,11 @@ switch ($route1) {
                 $view = "s1.php";
                 break;
         }
+    case 'top':
     default:
         // アカウントがあれば表示
         break;
 }
 // routing
 
-include "view/" . $view;
+include $view;
