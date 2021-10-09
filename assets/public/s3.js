@@ -4,10 +4,12 @@ import { Mail } from './modules.js';
 let Code = 0;
 
 $(function () {
-    var deferred = Mail.sendAuthCode($("input[name='email']").val());
+    var email = $("input[name='email']").val();
+    Code = Math.ceil(Math.random() * 1000000);
+    var params = { title: '認証コードのご案内', body: '認証コード：' + Code + '\n\nこの番号を認証コード入力画面で入力してください。' };
+    var deferred = Mail.send(email, params);
     deferred.done(function (data) {
-        Code = data;
-        console.log(Code);
+        if (!data) $("p.help.is-warning").html("メールの送信に失敗しました。<br>再度お試しください。");
     });
 
     $("._back").click(function () {

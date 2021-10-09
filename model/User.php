@@ -1,6 +1,9 @@
 <?php
-require_once 'Config.php';
-
+/**
+ * 実装未定
+ * @deprecated 未実装
+ * 
+ */
 class User
 {
     private $userid;

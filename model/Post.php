@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * 実装未定
+ * @deprecated 未実装
+ * 
+ */
 class Post
 {
     private $id;
