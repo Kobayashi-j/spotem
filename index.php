@@ -21,16 +21,22 @@ switch ($route1) {
         $tmp[] = "f";
         switch ($tmp[1]) {
             case 's':
-                $view = "s2.php";
+                $view = "view/s2.php";
                 break;
             case 't':
-                $view = "s3.php";
+                $view = "view/s3.php";
                 break;
             default:
-                $view = "s1.php";
+                $view = "view/s1.php";
                 break;
         }
+        break;
+    case 'show':
+        $view = "view/show.php";
+        break;
     case 'top':
+        $view = "view/top.html";
+        break;
     default:
         // アカウントがあれば表示
         break;
