@@ -65,7 +65,7 @@ body{
   
   /*タブのスタイル*/
   ._tab_item {
-    width: calc(100%/4);
+    width: calc(100%/3);
     height: 50px;
    /* border-bottom: 3px solid #332525;*/
     background-color: #f7f0dc;
