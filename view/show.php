@@ -8,15 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotem / </title>
-    <link rel="stylesheet" href="assets/public/show.css">
+    <link rel="stylesheet" href="../assets/public/show.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="assets/public/show.js" defer></script>
+    <script src="../assets/public/show.js" defer></script>
 
 </head>
 
 <body>
     <?php 
-    if (true){/*一般ユーザーのページ*/ 
+    if (false){/*一般ユーザーのページ*/ 
     ?>
     <div class="_profile">
         <div class="_square"></div>
