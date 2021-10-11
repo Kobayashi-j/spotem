@@ -8,20 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotem / </title>
-    <link rel="stylesheet" href="../assets/public/show.css">
+    <link rel="stylesheet" href="../view/css/show.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="../assets/public/show.js" defer></script>
+    <script src="../view/js/show.js" defer></script>
 
 </head>
 
 <body>
     <?php 
-    if (false){/*一般ユーザーのページ*/ 
+    if (true){/*一般ユーザーのページ*/ 
     ?>
     <div class="_profile">
         <div class="_square"></div>
         
-        <img class="_usericon" src="assets/img/cafe.png" alt="ユーザーアイコン">
+        <img class="_usericon" src="../view/img/cafe.png" alt="ユーザーアイコン">
         <button class="_followbutton" type="submit">フォロー</button>
         <p class="_username">naotoge5</p>
         <div class="_profilebox">
@@ -82,7 +82,7 @@
      <div class="_profile">
         <div class="_square"></div>
         
-        <img class="_usericon" src="assets/img/user2.png" alt="ユーザーアイコン">
+        <img class="_usericon" src="../view/img/user2.png" alt="ユーザーアイコン">
         <button class="_followbutton" type="submit">フォロー</button>
         <p class="_username">喫茶A</p>
         <div class="_profilebox">

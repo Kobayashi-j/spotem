@@ -31,11 +31,13 @@ switch ($route1) {
                 break;
         }
         break;
+    case 'show':
+        $view = "view/show.php";
+        break;
     case 'top':
         $view = "view/top.html";
         break;
     default:
-        $view = "view/show.php";
         // アカウントがあれば表示
         break;
 }

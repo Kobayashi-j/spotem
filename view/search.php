@@ -9,12 +9,12 @@ require_once 'controller/autoload.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotem - 検索</title>
-    <link rel="stylesheet" href="../assets/public/bulma.css">
-    <link rel="stylesheet" href="../assets/public/origin.css">
-    <link rel="stylesheet" href="../assets/public/search.css">
+    <link rel="stylesheet" href="view/css/bulma.css">
+    <link rel="stylesheet" href="view/css/origin.css">
+    <link rel="stylesheet" href="view/css/search.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-    <script src="../assets/public/search.js" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<?= $_ENV['MAP_API_KEY'] ?>&callback=initMap" async></script>
+    <script src="view/js/search.js" defer></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=<?php //echo $_ENV['MAP_API_KEY'] ?>&callback=initMap" async></script>-->
     <link rel="manifest" href="manifest.json">
 </head>
 

@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home.php</title>
-    <link rel="stylesheet" href="../assets/public/bulma.css">
-    <link rel="stylesheet" href="../assets/public/home.css">
+    <link rel="stylesheet" href="../view/css/bulma.css">
+    <link rel="stylesheet" href="../view/css/home.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <script>
         let tabsWithContent = (function() {
