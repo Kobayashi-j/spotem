@@ -1,5 +1,5 @@
 <?php
-
+namespace app\model;
 /**
  * データベース接続クラス - 非同期通信
  */
@@ -32,13 +32,13 @@ class DB implements Async
     {
         $res = false;
         try {
-            $db = new SQLite3(__DIR__ . '/../db/spotem.db');
+            $db = new \SQLite3(__DIR__ . '/../db/spotem.db');
             $db->enableExceptions(true);
             $stmt = $db->prepare($query);
             $stmt = self::setParams($stmt, $params);
             $stmt->execute();
             $res = true;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             //$flag = Config::errorType($e);
         } finally {
             $db->close();
@@ -57,7 +57,7 @@ class DB implements Async
     {
         $res = [];
         try {
-            $db = new SQLite3(__DIR__ . '/../db/spotem.db');
+            $db = new \SQLite3(__DIR__ . '/../db/spotem.db');
             $db->enableExceptions(true);
             $stmt = $db->prepare($query);
             $stmt = self::setParams($stmt, $params);
@@ -65,7 +65,7 @@ class DB implements Async
             while ($tmp = $result->fetchArray(SQLITE3_ASSOC)) {
                 $res = $res + [key($tmp) => $tmp[key($tmp)]];
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             //$flag = Config::errorType($e);
             $res = false;
         } finally {
@@ -77,11 +77,11 @@ class DB implements Async
     /**
      * パラメータをSQLite3Stmtに設定
      *
-     * @param SQLite3Stmt $stmt
+     * @param \SQLite3Stmt $stmt
      * @param array $params
-     * @return SQLite3Stmt
+     * @return \SQLite3Stmt
      */
-    protected static function setParams(SQLite3Stmt $stmt, $params)
+    protected static function setParams(\SQLite3Stmt $stmt, $params)
     {
         $keys = array_keys($params);
         foreach ($keys as $key) {
@@ -95,11 +95,11 @@ class DB implements Async
      *
      * @deprecated foreachの挙動が変（valueがすべて上書きされる？？）
      * 
-     * @param SQLite3Stmt $stmt
+     * @param \SQLite3Stmt $stmt
      * @param array $params
-     * @return SQLite3Stmt
+     * @return \SQLite3Stmt
      */
-    protected static function setParams_d(SQLite3Stmt $stmt, $params)
+    protected static function setParams_d(\SQLite3Stmt $stmt, $params)
     {
         foreach ($params as $key => $value) {
             $stmt->bindParam($key, $value);

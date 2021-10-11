@@ -1,14 +1,6 @@
 <?php
-require_once __DIR__ . "/../autoload.php";
+require_once "../../vendor/autoload.php";
 
-/*
-    controller/async/db/get
-    controller/async/db/set
-    controller/async/mail/send
-    controller/async/hash/get
-    controller/async/hash/check
-    controller/async/alert/get
-*/
 $request_uri = $_SERVER['REQUEST_URI'];
 // $method = $_SERVER['REQUEST_METHOD'];
 $request_uri = str_replace('/controller/async/', '', $request_uri);
@@ -21,13 +13,13 @@ $res = false;
 
 switch ($class) {
     case 'db':
-        $res = DB::call($method, $data);
+        $res = app\model\DB::call($method, $data);
         break;
     case 'mail':
-        $res = Mail::call($method, $data);
+        $res = app\model\Mail::call($method, $data);
         break;
     case 'hash':
-        $res = Hash::call($method, $data);
+        $res = app\model\Hash::call($method, $data);
         break;
     default:
         $res = ["message" => 'パラメータが違います'];

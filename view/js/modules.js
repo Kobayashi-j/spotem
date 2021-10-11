@@ -34,6 +34,7 @@ export class User {
                 params: { key: unique }
             }
         }).done(function (data) {
+            console.log(data);
             var data = JSON.parse(data);
             var flag = false;
             if (data["COUNT(userid)"]) flag = true;
@@ -148,6 +149,7 @@ export class Mail {
                 params: params
             }
         }).done(function (data) {
+            console.log(data);
             var data = JSON.parse(data);
             deferred.resolve(data);
         }).fail(function () {

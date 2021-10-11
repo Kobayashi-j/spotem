@@ -1,5 +1,5 @@
 <?php
-require_once "controller/autoload.php";
+session_start();
 
 $view = "view/top.html";
 
