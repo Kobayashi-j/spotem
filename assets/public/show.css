@@ -1,0 +1,124 @@
+body{
+    width: 390px;
+    height: 844px;
+    margin: auto;
+    background-color: rgb(250, 250, 250);
+    font-family:"Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+._profile{
+ 
+}
+
+._square{
+    width: 100%;
+    height: 40px;
+    background-color: #321313;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+._username{
+    font-size: 1.7em;
+    font-weight: bolder;
+    margin-left: 18px;
+}
+
+._profiletext{
+  margin-left: 18px;
+}
+
+._profilebox{
+    border-top: solid 4px  #321313;
+}
+
+._usericon {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: -10px;
+    padding-top: 10px;
+}
+
+._followbutton{
+    background-color: #e9993d;
+    color: #fff;
+    border: none;
+    border-radius:30px;
+    margin-right: 20px;
+    margin-top: -10px;
+
+}
+
+
+/*ここからタブ*/
+/*タブ切り替え全体のスタイル*/
+._profiletabs {
+    margin-top: 50px;
+    padding-bottom: 40px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 390px;
+    margin: 0 auto;
+  }
+  
+  /*タブのスタイル*/
+  ._tab_item {
+    width: calc(100%/4);
+    height: 50px;
+   /* border-bottom: 3px solid #332525;*/
+    background-color: #f7f0dc;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #565656;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+
+  ._twotabs ._tab_item {
+    width: calc(100%/2);
+  }
+
+  ._tab_item:hover {
+    opacity: 0.75;
+  }
+  
+  /*ラジオボタンを全て消す*/
+  input[name="_tab_item"] {
+    display: none;
+  }
+  
+  /*タブ切り替えの中身のスタイル*/
+  ._tab_content {
+    display: none;
+    padding: 40px 40px 0;/*投稿の位置変更*/
+    clear: both;
+    height: 400px;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE、Edgeでスクロールバーを非表示 */
+  }
+  
+  /*Chrome、Safariでスクロールバーを非表示*/
+  ._tab_content::-webkit-scrollbar {
+    display:none;
+  }
+
+  /*選択されているタブのコンテンツのみを表示*/
+  #post:checked ~ #post_content,
+  #like:checked ~ #like_content,
+  #coupon:checked ~ #coupon_content,
+  #info:checked ~ #info_content,
+  #photo:checked ~ #photo_content {
+    display: block;
+  }
+  
+  /*選択されているタブのスタイルを変える*/
+  ._profiletabs input:checked + ._tab_item {
+    background-color: #e9993d;
+    color: #fff;
+  }
