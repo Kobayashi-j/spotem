@@ -1,6 +1,9 @@
 <?php
-require_once 'Config.php';
-
+/**
+ * 実装未定
+ * @deprecated 未実装
+ * 
+ */
 class User
 {
     private $userid;
@@ -164,7 +167,7 @@ class User
             $result = $stmt->execute();
             $row = $result->fetchArray(SQLITE3_ASSOC);
             if ($row) {
-                $user = new User($row['userid'], $row['name'], $row['email']);
+                $user = new self($row['userid'], $row['name'], $row['email']);
                 $user->setComment($row['comment'])->setImage($row['image'])->setIsOfficial($row['is_official']);
                 $row = $user;
             }

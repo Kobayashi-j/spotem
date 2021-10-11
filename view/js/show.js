@@ -1,3 +1,4 @@
+/*
 let userid = '';
 var params = getParams();
 userid = params.userid;
@@ -41,3 +42,4 @@ $(function () {
         });
     }
 });
+*/

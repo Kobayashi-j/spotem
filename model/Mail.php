@@ -1,8 +1,4 @@
 <?php
-require '../vendor/autoload.php';
-
-use Dotenv\Dotenv;
-
 // PHPMailer のソースファイルの読み込み
 require_once 'PHPMailer-6.5.0/src/Exception.php';
 require_once 'PHPMailer-6.5.0/src/PHPMailer.php';
@@ -11,28 +7,26 @@ require_once 'PHPMailer-6.5.0/src/SMTP.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-
-
 class Mail
 {
-    private $email;
-    function __construct(string $email)
+    public static function call($method, $data)
     {
-        $this->email = $email;
-
-        $dotenv = Dotenv::createImmutable(dirname(__DIR__, 1));
-        $dotenv->load();
+        $res = false;
+        switch ($method) {
+            case 'send':
+                $res = self::send($data["email"], $data["params"]);
+                break;
+            default:
+                # code...
+                break;
+        }
+        return $res;
     }
-    /**
-     * メール送信
-     *
-     * @param string $title 件名
-     * @param string $body 本文
-     * @return int 送信完了:1, 送信失敗:0
-     */
-    function send(string $title, string $body)
+
+    public static function send($email, $params)
     {
-        try {      
+        $res = false;
+        try {
             $mailer = new PHPMailer(true);
             $mailer->CharSet = 'utf-8';
             $mailer->isSMTP();
@@ -44,18 +38,18 @@ class Mail
             $mailer->SMTPSecure = 'ssl';
             $mailer->Port = 465;
             $mailer->setFrom($mailuser, 'Spotem'); //送信者
-            $mailer->addAddress($this->email); //宛先
+            $mailer->addAddress($email); //宛先
 
-            $mailer->Subject = $title;
-            $mailer->Body = $body;
+            $mailer->Subject = $params["title"];
+            $mailer->Body = $params["body"];
 
             $mailer->send();
-            return 1;
+            $res = true;
         } catch (Exception $e) {
             echo $e->getMessage();
         } finally {
             unset($mailer);
         }
-        return 0;
+        return $res;
     }
 }
