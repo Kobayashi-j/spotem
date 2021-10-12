@@ -37,6 +37,6 @@ $array = ['URI' => $request_uri, 'METHOD' => $_SERVER['REQUEST_METHOD']];
 */
 
 // Origin null is not allowed by Access-Control-Allow-Origin.とかのエラー回避の為、ヘッダー付与
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: https://spotem.ml");
 
 echo json_encode($res);
