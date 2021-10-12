@@ -3,12 +3,17 @@ require_once "../../vendor/autoload.php";
 
 $request_uri = $_SERVER['REQUEST_URI'];
 // $method = $_SERVER['REQUEST_METHOD'];
+/*
 $request_uri = str_replace('/controller/async/', '', $request_uri);
 $tmp = explode('/', $request_uri);
 $class = $tmp[0];
 $method = $tmp[1];
 $data = $_POST;
+*/
 
+$class = array_key_first($_GET);
+$method = $_GET[$class];
+$data = $_POST;
 $res = false;
 
 switch ($class) {

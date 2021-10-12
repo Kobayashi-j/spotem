@@ -20,7 +20,7 @@
 
 <body>
     <div class="px-4 _content">
-        <form action="/signup/s" method="post" name="back">
+        <form action="/?signup=s" method="post" name="back">
             <input type="hidden" name="userid" value="<?= $_POST["userid"] ?>">
             <input type="hidden" name="name" value="<?= $_POST["name"] ?>">
             <input type="hidden" name="email" value="<?= $_POST["email"] ?>">

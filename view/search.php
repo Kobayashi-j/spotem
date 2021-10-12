@@ -1,6 +1,3 @@
-<?php
-require_once 'controller/autoload.php';
-?>
 <!DOCTYPE html>
 <html lang="ja">
 

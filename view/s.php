@@ -1,8 +1,3 @@
-<?php if (!isset($_POST["userid"])) {
-    header('Location: /');
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="ja" class="has-background-black-ter">
 
@@ -20,7 +15,7 @@
 
 <body>
     <div class="px-4 _content">
-        <form action="/signup" method="post" name="back">
+        <form action="/?signup" method="post" name="back">
             <input type="hidden" name="userid" value="<?= $_POST["userid"] ?>">
             <input type="hidden" name="name" value="<?= $_POST["name"] ?>">
         </form>
@@ -31,7 +26,7 @@
             &nbsp;戻る
         </p>
         <p class="is-size-4 has-text-weight-bold has-text-white my-5 has-text-centered">アカウントを作成</p>
-        <form action="/signup/t" method="post">
+        <form action="/?signup=t" method="post">
             <input type="hidden" name="userid" value="<?= $_POST["userid"] ?>">
             <input type="hidden" name="name" value="<?= $_POST["name"] ?>">
             <div id="email" class="field mb-5">

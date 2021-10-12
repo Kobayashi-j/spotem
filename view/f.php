@@ -22,7 +22,7 @@
             &nbsp;戻る
         </p>
         <p class="is-size-4 has-text-weight-bold has-text-white my-5 has-text-centered">アカウントを作成</p>
-        <form action="/signup/s" method="post">
+        <form action="/?signup=s" method="post">
             <div id="userid" class="field mb-5">
                 <div class="control has-icons-left has-icons-right">
                     <input class="input is-medium is-rounded" type="text" name="userid" value="<?php if (isset($_POST["userid"])) echo $_POST["userid"] ?>" placeholder="ユーザーID">

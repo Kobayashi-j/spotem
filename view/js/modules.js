@@ -28,7 +28,7 @@ export class User {
         var deferred = new $.Deferred();
         $.ajax({
             type: "POST",
-            url: "../controller/async/db/get",
+            url: "../controller/async/?db=get",
             data: {
                 query: "SELECT COUNT(userid) FROM users WHERE userid = :key OR email = :key",
                 params: { key: unique }
@@ -68,7 +68,7 @@ export class User {
         var deferred = new $.Deferred();
         $.ajax({
             type: "POST",
-            url: "../controller/async/db/set",
+            url: "../controller/async/?db=set",
             data: {
                 query: "INSERT INTO users VALUES(:userid, :name, :email, :password, :comment, :image, :is_official)",
                 params: {
@@ -96,7 +96,7 @@ export const Hash = {
 
         $.ajax({
             type: "POST",
-            url: "../controller/async/hash/get",
+            url: "../controller/async/?hash=get",
             data: {
                 value: value
             }
@@ -114,7 +114,7 @@ export const Hash = {
 
         $.ajax({
             type: "POST",
-            url: "../controller/async/hash/get",
+            url: "../controller/async/?hash=get",
             data: {
                 value: value,
                 hashed_value: hashed_value
@@ -143,7 +143,7 @@ export class Mail {
 
         $.ajax({
             type: "POST",
-            url: "../controller/async/mail/send",
+            url: "../controller/async/?mail=send",
             data: {
                 email: email,
                 params: params
