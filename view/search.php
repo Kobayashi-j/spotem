@@ -108,10 +108,10 @@
     <!--<div id="map"></div>-->
     <div class="tabs is-centered is-fullwidth has-background-white _menubar">
         <ul>
-            <li><a href="http://"><span class="icon"><i class="far fa-edit"></i></span></a></li>
-            <li><a href="home.php"><span class="icon"><i class="fas fa-home"></i></span></a></li>
-            <li class="is-active"><a href="search.php"><span class="icon"><i class="fas fa-search"></i></span></a></li>
-            <li><a href="settings.php"><span class="icon"><i class="fas fa-cog"></i></span></a></li>
+            <li><a href="/?new"><span class="icon"><i class="far fa-edit"></i></span></a></li>
+            <li><a href="/?home"><span class="icon"><i class="fas fa-home"></i></span></a></li>
+            <li class="is-active"><a href="/?search"><span class="icon"><i class="fas fa-search"></i></span></a></li>
+            <li><a href="/?settings"><span class="icon"><i class="fas fa-cog"></i></span></a></li>
         </ul>
     </div>
 </body>

@@ -51,6 +51,7 @@ switch ($route) {
     case 'search':
     case 'new':
     case 'login':
+    case 'settings':
         $view = "view/" . $route . ".php";
         break;
     case 'signup':
