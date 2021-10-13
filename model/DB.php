@@ -32,8 +32,9 @@ class DB implements Async
     {
         $res = false;
         try {
-            $db = new \SQLite3(__DIR__ . '/../db/spotem.db');
+            $db = new \SQLite3(__DIR__ . "/../db/spotem.db");
             $db->enableExceptions(true);
+            $db->exec("PRAGMA foreign_keys=true");
             $stmt = $db->prepare($query);
             $stmt = self::setParams($stmt, $params);
             $stmt->execute();
@@ -59,6 +60,7 @@ class DB implements Async
         try {
             $db = new \SQLite3(__DIR__ . '/../db/spotem.db');
             $db->enableExceptions(true);
+            $db->exec("PRAGMA foreign_keys=true");
             $stmt = $db->prepare($query);
             $stmt = self::setParams($stmt, $params);
             $result = $stmt->execute();

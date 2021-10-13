@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <link rel="stylesheet" href="../view/css/auth.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="../view/js/s3.js" type="module" defer></script>
+    <script src="../view/js/t.js" type="module" defer></script>
     <title>新規登録 / Spotem</title>
 </head>
 
