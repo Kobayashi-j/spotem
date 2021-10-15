@@ -1,4 +1,11 @@
 db
 vendor
+node_modules
+view/css/tailwind_setup.css
+view/css/tailwind.css
+composer.json
+composer.lock
+package-lock.json
+package.json
 .htaccess
 .env
