@@ -6,8 +6,33 @@ body{
     font-family:"Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+._profiletable{
+    width: 100%;
+    margin-left: 18px;
+    margin-bottom: 40px;
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+
+._profiletable th{
+    border-bottom: solid 2px #e9993d;
+    display: flex;
+    display: -webkit-flex;
+    white-space:nowrap;
+}
+
+._profiletable td{
+    padding-left: 20px;
+}
+
+._infohead{
+    margin-left: 18px;
+    margin-bottom: -5px;
+    font-weight: bolder;
+}
+
 ._profile{
- 
+    position: relative;
 }
 
 ._square{
@@ -21,6 +46,10 @@ body{
     font-size: 1.7em;
     font-weight: bolder;
     margin-left: 18px;
+    position: absolute;
+    top: 50px;
+    left: 150px;
+
 }
 
 ._profiletext{
@@ -29,6 +58,8 @@ body{
 
 ._profilebox{
     border-top: solid 4px  #321313;
+    margin-top: 25px;
+    margin-bottom: 40px;
 }
 
 ._usericon {
@@ -46,9 +77,13 @@ body{
     color: #fff;
     border: none;
     border-radius:30px;
-    margin-right: 20px;
-    margin-top: -10px;
+    position: absolute;
+    top: 140px;
+    left: 170px;
+  }
 
+._followbutton:hover{
+  background-color: #ffbe73;
 }
 
 
@@ -122,3 +157,24 @@ body{
     background-color: #e9993d;
     color: #fff;
   }
+
+  ._tabtable{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+    font-size: smaller;
+    margin-bottom: 30px;
+  }
+
+  ._tabtable th{
+    border-bottom: solid 2px #e9993d;
+    display: flex;
+    display: -webkit-flex;
+    white-space:nowrap;
+  }
+
+  ._tabtable td{
+    padding-left: 20px;
+    word-break:normal;
+  }
+ 
