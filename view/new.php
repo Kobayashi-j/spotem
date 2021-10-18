@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="">
 
 <head>
     <meta charset="UTF-8">
@@ -9,33 +9,39 @@
     <!--アイコンCSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <!--リセットCSS-->
-    <link href="https://unpkg.com/sanitize.css" rel="stylesheet" />
+    <link href="../view/css/tailwind.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="../view/js/s1.js" type="module" defer></script>
     <title>新規作成</title>
 </head>
 
 <body>
-    <div class="px-4 _content">
-        <p class="_back has-text-success is-inline">
-            <span class="icon is-small is-right">
-                <i class="fas fa-arrow-left"></i>
-            </span>
-            &nbsp;戻る
-        </p>
-        <hr>
-        <div class="is-flex is-justify-content-center">
-            <div class="is-flex-grow-0">
-                <figure class="image is-48x48">
-                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-                </figure>
-            </div>
-            <div class="is-flex-grow-1">
-                <div class="control">
-                    <textarea class="textarea has-fixed-size" placeholder="Fixed size textarea"></textarea>
-                </div>
+    <div class="border-b border-grey-200">
+        <a href="/?search" class="inline-block p-3">
+            <span class="mr-2"><i class="fas fa-arrow-left"></i></span>戻る
+        </a>
+    </div>
+    <div class="flex">
+        <div>
+            <img src="../view/img/naotoge5.png" alt="" class="w-12 m-2 border border-yellow-600 rounded-full">
+        </div>
+        <div>
+            <textarea name="" id="" rows="10" class="m-2 outline-none bg-transparent resize-none w-full"></textarea>
+            <div class="flex border-t border-yellow-600">
+                <label class="ml-4 my-2 text-yellow-800">
+                    <span title="ファイルを選択">
+                        <i class="far fa-image"></i>
+                    </span>
+                    <input type="file" name="image" class="hidden">
+                </label>
+                <label class="ml-4 my-2 text-yellow-800">
+                    <span title="ファイルを選択">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                </label>
             </div>
         </div>
+
     </div>
 </body>
 

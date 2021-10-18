@@ -167,3 +167,29 @@ export class Mail {
         return email.match(/.+@.+\..+/);
     }
 }
+
+export const Cookie = {
+    /**
+     * @param {string} key cookieのkey
+     * @return {string|boolean} cookieのvalue
+     */
+    get: function (key) {
+        var cookiesRow = document.cookie; //全てのcookieを取り出して
+        var cookiesArray = cookiesRow.split(';'); // ;で分割し配列に
+        for (var cookieRow of cookiesArray) { //一つ一つ取り出して
+            console.log(cookieRow);
+            var cookie = cookieRow.split('='); //さらに=で分割して配列に
+            if (cookie[0] == key) { // 取り出したいkeyと合致したら
+                return cookie[1];
+            }
+        }
+        return false;
+    },
+    /**
+     * @param {string} key cookieのkey
+     * @param {string} value cookieのvalue
+     */
+    set: function (key, value) {
+        document.cookie = key + "=" + value;
+    }
+}

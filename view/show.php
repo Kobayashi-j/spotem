@@ -16,7 +16,7 @@
 
 <body>
     <?php 
-    if (true){/*一般ユーザーのページ*/ 
+    if (false){/*一般ユーザーのページ*/ 
     ?>
     <div class="_profile">
         <div class="_square"></div>

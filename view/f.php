@@ -23,6 +23,17 @@
         </p>
         <p class="is-size-4 has-text-weight-bold has-text-white my-5 has-text-centered">アカウントを作成</p>
         <form action="/?signup=s" method="post">
+            <!--
+                <div class="flex w-full mt-64">
+                    <span class="my-1 border-t border-l border-b rounded-tl-3xl rounded-bl-3xl border-yellow-600 px-3">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" placeholder="キーワード検索" class="my-1 w-full border-t border-b border-yellow-600 outline-none" />
+                    <span class="my-1 border-t border-r border-b rounded-tr-3xl rounded-br-3xl border-yellow-600 px-3">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            -->
             <div id="userid" class="field mb-5">
                 <div class="control has-icons-left has-icons-right">
                     <input class="input is-medium is-rounded" type="text" name="userid" value="<?php if (isset($_POST["userid"])) echo $_POST["userid"] ?>" placeholder="ユーザーID">
