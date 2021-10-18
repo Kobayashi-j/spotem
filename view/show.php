@@ -38,26 +38,26 @@
     
         <div class="_tab_content" id="post_content">
         投稿を一覧表示
-        あ<br>
-        い<br>
-        う<br>
-        え<br>
-        お<br>
-        か<br>
-        き<br>
-        く<br>
-        け<br>
-        こ<br>
-        さ<br>
+        <br>
+        縦<br>
+        ス<br>
+        ク<br>
+        ロ<br>
+        ｜<br>
+        ル<br>
         し<br>
+        ま<br>
         す<br>
-        せ<br>
-        そ<br>
-        た<br>
-        ち<br>
-        つ<br>
-        て<br>
-        と<br>
+        。<br>
+        1<br>
+        2<br>
+        3<br>
+        4<br>
+        5<br>
+        6<br>
+        7<br>
+        8<br>
+        9<br>
         <br>
         <br>
         <br>
