@@ -21,12 +21,12 @@
             <span class="mr-2"><i class="fas fa-arrow-left"></i></span>戻る
         </a>
     </div>
-    <div class="flex">
-        <div>
-            <img src="../view/img/naotoge5.png" alt="" class="w-12 m-2 border border-yellow-600 rounded-full">
+    <div class="flex justify-between">
+        <div class="p-3">
+            <img src="../view/img/naotoge5.png" alt="" class="w-12 border border-yellow-600 rounded-full">
         </div>
-        <div>
-            <textarea name="" id="" rows="10" class="m-2 outline-none bg-transparent resize-none w-full"></textarea>
+        <div class="flex-auto p-3">
+            <textarea name="" id="" rows="10" class="outline-none bg-transparent resize-none w-full"></textarea>
             <div class="flex border-t border-yellow-600">
                 <label class="ml-4 my-2 text-yellow-800">
                     <span title="ファイルを選択">

@@ -2,7 +2,6 @@ db
 vendor
 node_modules
 view/css/tailwind_setup.css
-view/css/tailwind.css
 tailwind.config.js
 composer.json
 composer.lock
