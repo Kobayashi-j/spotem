@@ -128,7 +128,36 @@
         </div>
         <div class="_tab_content" id="coupon_content">
         フェア・クーポンを一覧表示
+        <table class="_tabtable">
+            <p>フェア情報</p>
+            <tr>
+                <th>内容</th>
+                <td>期間限定商品AA</td>
+            </tr>
+            <tr>
+                <th>期間</th>
+                <td>2022年 1月1日~1月31日</td>
+            </tr>
+        </table>
+
+        <table class="_tabtable">
+            <p>クーポン</p>
+            <tr>
+                <th>内容</th>
+                <td>AAセット200円OFF</td>
+            </tr>
+            <tr>
+                <th>期間</th>
+                <td>2022年 1月1日~1月31日</td>
+            </tr>
+            <tr>
+                <th>利用条件</th>
+                <td>14:00までにご来店のお客様限定です</td>
+            </tr>
+        </table>
+
         </div>
+      
         <div class="_tab_content" id="info_content">
         店舗情報を一覧表示
         </div>
@@ -136,6 +165,7 @@
         写真を一覧表示
         </div>
     </div>
+
     <?php
     }
     ?>
