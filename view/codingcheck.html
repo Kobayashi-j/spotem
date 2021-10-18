@@ -1,5 +1,3 @@
-<!--ゲスト側マイページ-->
-    
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -15,82 +13,18 @@
 </head>
 
 <body>
-    <?php 
-    if (false){/*一般ユーザーのページ*/ 
-    ?>
-    <div class="_profile">
-        <div class="_square"></div>
-        
-        <img class="_usericon" src="../view/img/cafe.png" alt="ユーザーアイコン">
-        <button class="_followbutton" type="submit">フォロー</button>
-        <p class="_username">naotoge5</p>
-        <div class="_profilebox">
-        <p class="_profiletext">滋賀県在住のnaotoge5です。<br>よろしくお願いします。</p>
-        </div>
-    </div>
 
-    <div class="_profiletabs _twotabs">
-        <input id="post" type="radio" name="_tab_item" checked>
-        <label class="_tab_item" for="post">投稿</label>
-
-        <input id="like" type="radio" name="_tab_item">
-        <label class="_tab_item" for="like">いいね</label>
-    
-        <div class="_tab_content" id="post_content">
-        投稿を一覧表示
-        <br>
-        縦<br>
-        ス<br>
-        ク<br>
-        ロ<br>
-        ｜<br>
-        ル<br>
-        し<br>
-        ま<br>
-        す<br>
-        。<br>
-        1<br>
-        2<br>
-        3<br>
-        4<br>
-        5<br>
-        6<br>
-        7<br>
-        8<br>
-        9<br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        end
-        </div>
-        <div class="_tab_content" id="like_content">
-        いいねした投稿を一覧表示
-        </div>
-    </div>
-
-    <?php
-    }else{/*お店のページ*/ 
-    ?>
      <div class="_profile">
         <div class="_square"></div>
         
-        <img class="_usericon" src="../view/img/user2.png" alt="ユーザーアイコン">
+        <img class="_usericon" src="../view/img/cafe.png" alt="ユーザーアイコン">
         <button class="_followbutton" type="submit">フォロー</button>
         <p class="_username">喫茶A</p>
         <div class="_profilebox">
         <p class="_profiletext">おいしいコーヒーと安らぎ空間をご提供します。<br></p>
         </div>
-    </div>
-
-    <table class="_profiletable">
+        
+        <table class="_profiletable">
             <p class="_infohead">店舗情報</p>
             <tr>
                 <th>店名</th>
@@ -165,10 +99,6 @@
         写真を一覧表示
         </div>
     </div>
-
-    <?php
-    }
-    ?>
 
 
 </body>
