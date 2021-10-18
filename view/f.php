@@ -1,8 +1,3 @@
-<?php if (!isset($_POST["userid"])) {
-    header('Location: /');
-    exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="ja" class="has-background-black-ter">
 
@@ -14,16 +9,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <link rel="stylesheet" href="../view/css/auth.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="../view/js/s2.js" type="module" defer></script>
+    <script src="../view/js/f.js" type="module" defer></script>
     <title>新規登録 / Spotem</title>
 </head>
 
 <body>
     <div class="px-4 _content">
-        <form action="/signup" method="post" name="back">
-            <input type="hidden" name="userid" value="<?= $_POST["userid"] ?>">
-            <input type="hidden" name="name" value="<?= $_POST["name"] ?>">
-        </form>
         <p class="_back has-text-success is-inline">
             <span class="icon is-small is-right">
                 <i class="fas fa-arrow-left"></i>
@@ -31,14 +22,23 @@
             &nbsp;戻る
         </p>
         <p class="is-size-4 has-text-weight-bold has-text-white my-5 has-text-centered">アカウントを作成</p>
-        <form action="/signup/t" method="post">
-            <input type="hidden" name="userid" value="<?= $_POST["userid"] ?>">
-            <input type="hidden" name="name" value="<?= $_POST["name"] ?>">
-            <div id="email" class="field mb-5">
+        <form action="/?signup=s" method="post">
+            <!--
+                <div class="flex w-full mt-64">
+                    <span class="my-1 border-t border-l border-b rounded-tl-3xl rounded-bl-3xl border-yellow-600 px-3">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" placeholder="キーワード検索" class="my-1 w-full border-t border-b border-yellow-600 outline-none" />
+                    <span class="my-1 border-t border-r border-b rounded-tr-3xl rounded-br-3xl border-yellow-600 px-3">
+                        <i class="fas fa-search"></i>
+                    </span>
+                </div>
+            -->
+            <div id="userid" class="field mb-5">
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-medium is-rounded" type="email" name="email" value="<?php if (isset($_POST["email"])) echo $_POST["email"] ?>" placeholder="メールアドレス">
+                    <input class="input is-medium is-rounded" type="text" name="userid" value="<?php if (isset($_POST["userid"])) echo $_POST["userid"] ?>" placeholder="ユーザーID">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-at"></i>
                     </span>
                     <span class="icon is-small is-right">
                         <i class="fas j_icon"></i>
@@ -46,29 +46,16 @@
                 </div>
                 <p class="help is-danger"></p>
             </div>
-            <div id="password" class="field mb-5">
+            <div id="name" class="field mb-5">
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-medium is-rounded" type="password" name="password" oncopy="return false" value="<?php if (isset($_POST["password"])) echo $_POST["password"] ?>" placeholder="パスワード（8文字以上の半角英数）">
+                    <input class="input is-medium is-rounded" type="text" name="name" value="<?php if (isset($_POST["name"])) echo $_POST["name"] ?>" placeholder="名前">
                     <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-user"></i>
                     </span>
                     <span class="icon is-small is-right">
                         <i class="fas j_icon"></i>
                     </span>
                 </div>
-                <p class="help is-danger"></p>
-            </div>
-            <div id="password_check" class="field mb-5">
-                <div class="control has-icons-left has-icons-right">
-                    <input class="input is-medium is-rounded" type="password" name="password_check" oncopy="return false" value="<?php if (isset($_POST["password"])) echo $_POST["password"] ?>" placeholder="確認">
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas j_icon"></i>
-                    </span>
-                </div>
-                <p class="help is-danger"></p>
             </div>
             <input class="input button is-rounded is-success j_submit" type="button" value="次へ" onclick="submit();" disabled>
         </form>

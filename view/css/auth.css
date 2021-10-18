@@ -2,33 +2,27 @@
 html {
     background-color: rgb(34, 39, 46);
 }*/
-input:not(input[type="button"]) {
+:root {
+    --color-success: #257953;
+}
+
+.input:not(input[type="button"]) {
     background-color: transparent;
-}
-
-input::placeholder {
-    color: gray!important;
-    font-size: 16px;
-}
-
-input::placeholder {
-    color: gray!important;
-    font-size: 10px;
-}
-
-@media screen and (min-width: 1024px) {
-    input::placeholder {
-        font-size: 16px;
-    }
-}
-
-input:not(input[type="button"]) {
     color: white;
+}
+
+.input::placeholder {
+    color: gray;
+    font-size: small;
+}
+
+_:lang(x)::-internal-media-controls-overlay-cast-button, .input:not(input[type="button"]) {
+    padding-bottom: .6em;
 }
 
 ._back:hover {
     cursor: pointer;
-    color: #257953 !important;
+    color: var(--color-success) !important;
 }
 
 ._content {

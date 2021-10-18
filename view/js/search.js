@@ -1,3 +1,4 @@
+import { Cookie } from './modules.js';
 /*
 let map;
 
@@ -61,3 +62,17 @@ function showErr(err) {
             alert(err.message);
     }
 }*/
+var flag = true;
+var cookiesRow = document.cookie; //全てのcookieを取り出して
+var cookiesArray = cookiesRow.split(';'); // ;で分割し配列に
+for (var cookieRow of cookiesArray) { //一つ一つ取り出して
+    console.log(cookieRow);
+    var cookie = cookieRow.split('='); //さらに=で分割して配列に
+    if (cookie[0] == "spotem_thema") { // 取り出したいkeyと合致したら
+        alert(cookie[1]); // [key,value] 
+        flag = false;
+    }
+}
+if (flag) {
+    document.cookie = "spotem_thema=dark";
+}

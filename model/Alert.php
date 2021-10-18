@@ -1,4 +1,5 @@
 <?php
+namespace app\model;
 
 class Alert implements Async
 {

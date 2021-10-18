@@ -28,7 +28,7 @@ export class User {
         var deferred = new $.Deferred();
         $.ajax({
             type: "POST",
-            url: "../controller/async/db/get",
+            url: "../controller/async/?db=get",
             data: {
                 query: "SELECT COUNT(userid) FROM users WHERE userid = :key OR email = :key",
                 params: { key: unique }
@@ -67,7 +67,7 @@ export class User {
         var deferred = new $.Deferred();
         $.ajax({
             type: "POST",
-            url: "../controller/async/db/set",
+            url: "../controller/async/?db=set",
             data: {
                 query: "INSERT INTO users VALUES(:userid, :name, :email, :password, :comment, :image, :is_official)",
                 params: {
@@ -95,7 +95,7 @@ export const Hash = {
 
         $.ajax({
             type: "POST",
-            url: "../controller/async/hash/get",
+            url: "../controller/async/?hash=get",
             data: {
                 value: value
             }
@@ -113,7 +113,7 @@ export const Hash = {
 
         $.ajax({
             type: "POST",
-            url: "../controller/async/hash/get",
+            url: "../controller/async/?hash=get",
             data: {
                 value: value,
                 hashed_value: hashed_value
@@ -142,12 +142,13 @@ export class Mail {
 
         $.ajax({
             type: "POST",
-            url: "../controller/async/mail/send",
+            url: "../controller/async/?mail=send",
             data: {
                 email: email,
                 params: params
             }
         }).done(function (data) {
+            console.log(data);
             var data = JSON.parse(data);
             deferred.resolve(data);
         }).fail(function () {
@@ -164,5 +165,31 @@ export class Mail {
     static check(email) {
         // 形式確認
         return email.match(/.+@.+\..+/);
+    }
+}
+
+export const Cookie = {
+    /**
+     * @param {string} key cookieのkey
+     * @return {string|boolean} cookieのvalue
+     */
+    get: function (key) {
+        var cookiesRow = document.cookie; //全てのcookieを取り出して
+        var cookiesArray = cookiesRow.split(';'); // ;で分割し配列に
+        for (var cookieRow of cookiesArray) { //一つ一つ取り出して
+            console.log(cookieRow);
+            var cookie = cookieRow.split('='); //さらに=で分割して配列に
+            if (cookie[0] == key) { // 取り出したいkeyと合致したら
+                return cookie[1];
+            }
+        }
+        return false;
+    },
+    /**
+     * @param {string} key cookieのkey
+     * @param {string} value cookieのvalue
+     */
+    set: function (key, value) {
+        document.cookie = key + "=" + value;
     }
 }
