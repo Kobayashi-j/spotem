@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotem - 検索</title>
+    <link rel="stylesheet" href="../view/css/all.min.css">
     <link rel="stylesheet" href="../view/css/tailwind.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <script src="view/js/search.js" defer></script>
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=<?php //echo $_ENV['MAP_API_KEY'] 
                                                                     ?>&callback=initMap" async></script>-->
@@ -98,12 +98,21 @@
         content<br>
     </div>
     <!-- Tabs -->
-    <ul id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">
-        <li class="w-full"><a href="/?new" class="block w-full text-center py-3 bg-yellow-50 hover:bg-yellow-100 text-gray-500"><i class="far fa-edit"></i></a></li>
-        <li class="w-full"><a href="/?home" class="block w-full text-center py-3 bg-yellow-50 hover:bg-yellow-100 text-gray-500"><i class="far fa-home"></i></a></li>
+    <div id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">
+        <a href="/?home" class="flex-grow flex items-center justify-center">
+            <i class="far fa-home"></i>
+        </a>
+        <a href="/?home" class="flex-grow flex items-center justify-center py-2">
+            <img src="../view/img/naotoge5.png" alt="" class="inline-block w-6 rounded-full">
+        </a>
+        <a href="/?new" class="flex-grow flex items-center justify-center">
+            <i class="far fa-edit"></i>
+        </a>
+        <!--<img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
         <li class="w-full"><a href="/?search" class="block w-full text-center py-3 bg-yellow-500 text-white"><i class="far fa-search"></i></a></li>
         <li class="w-full"><a href="/?settings" class="block w-full text-center py-3 bg-yellow-50 hover:bg-yellow-100 text-gray-500"><i class="fas fa-user-circle"></i></a></li>
-    </ul>
+        -->
+    </div>
 </body>
 
 </html>
