@@ -1,4 +1,6 @@
 <?php
+
+namespace app\model;
 // PHPMailer のソースファイルの読み込み
 require_once 'PHPMailer-6.5.0/src/Exception.php';
 require_once 'PHPMailer-6.5.0/src/PHPMailer.php';
@@ -6,6 +8,8 @@ require_once 'PHPMailer-6.5.0/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
+use Dotenv\Dotenv;
 
 class Mail
 {
@@ -25,6 +29,9 @@ class Mail
 
     public static function send($email, $params)
     {
+
+        $dotenv = Dotenv::createImmutable(dirname(__DIR__, 1));
+        $dotenv->load();
         $res = false;
         try {
             $mailer = new PHPMailer(true);

@@ -1,4 +1,6 @@
 <?php
+namespace app\model;
+
 class Hash implements Async
 {
 
