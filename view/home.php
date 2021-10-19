@@ -8,7 +8,8 @@
     
     <link rel="stylesheet" href="../view/css/all.min.css">
     <link rel="stylesheet" href="../view/css/tailwind.css">
-    <script src="view/js/search.js" defer></script>
+    <script src="../view/js/jquery.js"></script>
+    <script src="view/js/home.js" type="module" defer></script>
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=<?php //echo $_ENV['MAP_API_KEY'] 
                                                                     ?>&callback=initMap" async></script>-->
 
@@ -106,7 +107,7 @@
         <a href="/?home" class="flex-grow flex items-center justify-center">
             <i class="far fa-home text-xl text-yellow-600"></i>
         </a>
-        <a href="/?naotoge5" class="flex-grow flex items-center justify-center py-3">
+        <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
             <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
         </a>
         <a href="/?new" class="flex-grow flex items-center justify-center">

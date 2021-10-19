@@ -1,5 +1,7 @@
 <?php
+
 namespace app\model;
+
 /**
  * データベース接続クラス - 非同期通信
  */
@@ -65,7 +67,7 @@ class DB implements Async
             $stmt = self::setParams($stmt, $params);
             $result = $stmt->execute();
             while ($tmp = $result->fetchArray(SQLITE3_ASSOC)) {
-                $res = $res + [key($tmp) => $tmp[key($tmp)]];
+                $res[] = $tmp;
             }
         } catch (\Exception $e) {
             //$flag = Config::errorType($e);

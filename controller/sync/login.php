@@ -6,15 +6,13 @@ $password = $_POST["password"];
 $hashed_password = app\model\Hash::get($_POST["password"]);
 
 $res = app\model\DB::get("SELECT userid, password FROM users WHERE userid = :key OR email = :key", [":key" => $unique]);
-
 $location = "?login";
-
-if (!empty($res) && app\model\Hash::check($password, $res["password"])) {
-    $_SESSION["userid"] = $res["userid"];
+if (!empty($res) && app\model\Hash::check($password, $res[0]["password"])) {
+    $_SESSION["userid"] = $res[0]["userid"];
+    app\model\Alert::set('ログインしました', 'success');
     $location = "?home";
 } else {
-    $_SESSION["alert"] = ["message"=>'ユーザーIDまたはパスワードが違います。', "type" => 'warning'];
-    app\model\Alert::set('登録に失敗しました。再度操作をお願いします。', 'danger');
+    app\model\Alert::set('ユーザーIDまたはパスワードが違います', 'warning');
     $location = "?login=" . $unique;
 }
 

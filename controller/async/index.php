@@ -26,7 +26,7 @@ switch ($class) {
     case 'hash':
         $res = app\model\Hash::call($method, $data);
         break;
-    case "alert":
+    case 'alert':
         $res = app\model\Alert::call($method);
         break;
     default:

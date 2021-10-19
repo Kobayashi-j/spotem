@@ -211,7 +211,7 @@
         <a href="/?home" class="flex-grow flex items-center justify-center">
             <i class="far fa-home text-xl"></i>
         </a>
-        <a href="/?naotoge5" class="flex-grow flex items-center justify-center py-3">
+        <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
             <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full border border-yellow-600">
         </a>
         <a href="/?new" class="flex-grow flex items-center justify-center">
