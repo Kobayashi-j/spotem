@@ -7,7 +7,7 @@ class Alert implements Async
      * 
      * @return void
      */
-    public static function call($method, $data)
+    public static function call($method, $data = null)
     {
         switch ($method) {
             case 'set':
@@ -29,16 +29,6 @@ class Alert implements Async
      */
     public static function set($message, $type)
     {
-        switch ($type) {
-            case 'success':
-            case 'warning':
-            case 'danger':
-                $_SESSION["alert"] = ["message" => $message, "class" => 'has-background-' . $type . '-light'];
-                break;
-            case 'info':
-            default:
-                $_SESSION["alert"] = ["message" => $message, "class" => 'has-background-info-light'];
-                break;
-        }
+        $_SESSION["alert"] = ["message" => $message, "type" => $type];
     }
 }

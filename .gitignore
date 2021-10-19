@@ -1,5 +1,4 @@
 db
-vendor
 node_modules
 view/css/tailwind_setup.css
 composer.json

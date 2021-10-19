@@ -104,13 +104,13 @@
     <!-- Tabs -->
     <div id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">
         <a href="/?home" class="flex-grow flex items-center justify-center">
-            <i class="far fa-home text-lg text-yellow-600"></i>
+            <i class="far fa-home text-xl text-yellow-600"></i>
         </a>
-        <a href="/?naotoge5" class="flex-grow flex items-center justify-center py-2">
+        <a href="/?naotoge5" class="flex-grow flex items-center justify-center py-3">
             <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
         </a>
         <a href="/?new" class="flex-grow flex items-center justify-center">
-            <i class="far fa-edit text-lg"></i>
+            <i class="far fa-edit text-xl"></i>
         </a>
         <!--<img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
         <li class="w-full"><a href="/?search" class="block w-full text-center py-3 bg-yellow-500 text-white"><i class="far fa-search"></i></a></li>

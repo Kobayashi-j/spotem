@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <div class="border-b border-grey-200">
+    <div class="border-b border-gray-200">
         <!--php:$_SERVER['HTTP_REFERER']実装-->
         <a href="/?home" class="inline-block p-3">
             <span class="mr-2"><i class="fas fa-arrow-left"></i></span>戻る
@@ -47,13 +47,13 @@
     <!-- Tabs -->
     <div id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">
         <a href="/?home" class="flex-grow flex items-center justify-center">
-            <i class="far fa-home text-lg"></i>
+            <i class="far fa-home text-xl"></i>
         </a>
-        <a href="/?naotoge5" class="flex-grow flex items-center justify-center py-2">
+        <a href="/?naotoge5" class="flex-grow flex items-center justify-center py-3">
             <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
         </a>
         <a href="/?new" class="flex-grow flex items-center justify-center">
-            <i class="far fa-edit text-lg text-yellow-600"></i>
+            <i class="far fa-edit text-xl text-yellow-600"></i>
         </a>
         <!--<img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
         <li class="w-full"><a href="/?search" class="block w-full text-center py-3 bg-yellow-500 text-white"><i class="far fa-search"></i></a></li>
