@@ -39,7 +39,7 @@
             <div class="text-right mt-3">
                 <a href="" class="text-blue-900 text-sm">パスワードを忘れた場合</a>
             </div>
-            <button type="submit" class="w-full my-6 py-1 bg-yellow-400 rounded-md">ログイン</button>
+            <button type="submit" class="font-normal w-full my-6 py-1 bg-yellow-400 rounded-md">ログイン</button>
         </form>
         <div class="text-xs text-gray-400 text-right">
             アカウントをお持ちでないですか？<a href="/?signup" class="text-blue-900">登録する</a>

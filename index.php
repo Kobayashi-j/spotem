@@ -7,6 +7,7 @@ $redirect = false;
 switch ($route) {
     case 'home':
     case 'search':
+    case 'info':
     case 'new':
     case 'settings':
         if (isset($_SESSION["userid"])) {
@@ -44,7 +45,7 @@ switch ($route) {
         }
         break;
     case 'top':
-        $view = "view/top.html";
+        $view = "view/top.php";
         break;
     default:
         $view = "view/show.php";
