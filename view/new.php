@@ -47,7 +47,7 @@
     <!-- Tabs -->
     <div id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">
         <a href="/?home" class="flex-grow flex items-center justify-center">
-            <i class="far fa-home text-xl"></i>
+            <i class="fas fa-home text-xl"></i>
         </a>
         <a href="/?naotoge5" class="flex-grow flex items-center justify-center py-3">
             <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
