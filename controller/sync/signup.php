@@ -10,13 +10,13 @@ $params = [":userid" => $userid, ":name" => $name, ":email" => $email, ":passwor
 
 $res = app\model\DB::set("INSERT INTO users VALUES(:userid, :name, :email, :password, :comment, :image, :is_official)", $params);
 
-$location = "top";
+$location = "";
 if ($res) {
     app\model\Alert::set('登録が完了しました。', 'success');
     $_SESSION["userid"] = $userid;
-    $location = "home";
+    $location = "?home";
 } else {
     app\model\Alert::set('登録に失敗しました。再度操作をお願いします。', 'danger');
 }
 
-header('Location: ../../' . $location);
+header("Location: ../../" . $location);

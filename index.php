@@ -2,27 +2,44 @@
 session_start();
 
 $route = (!empty($_GET)) ? array_key_first($_GET) : 'top';
+$redirect = false;
 
 switch ($route) {
     case 'home':
     case 'search':
     case 'new':
-    case 'login':
     case 'settings':
-        $view = "view/" . $route . ".php";
+        if (isset($_SESSION["userid"])) {
+            $view = "view/" . $route . ".php";
+            break;
+        }
+        $redirect = "?login";
+        break;
+    case 'login':
+        if (!isset($_SESSION["userid"])) {
+            $view = "view/login.php";
+            break;
+        }
+        $redirect = "?home";
         break;
     case 'signup':
-        $view = "view/f.php";
-        $route2 = (!empty($_GET["signup"])) ? $_GET["signup"] : 'f';
-        switch ($route2) {
-            case 's':
-                if (isset($_POST["userid"])) $view = "view/s.php";
+        $step = (!empty($_GET["signup"])) ? $_GET["signup"] : '1';
+        switch ($step) {
+            case '1':
+                $view = "view/signup1.php";
                 break;
-            case 't':
-                if (isset($_POST["email"])) $view = "view/t.php";
-                break;
+            case '2':
+                if (isset($_POST["userid"])) {
+                    $view = "view/signup2.php";
+                    break;
+                }
+            case '3':
+                if (isset($_POST["email"])) {
+                    $view = "view/signup3.php";
+                    break;
+                }
             default:
-                $view = "view/f.php";
+                $redirect = "?signup";
                 break;
         }
         break;
@@ -33,5 +50,8 @@ switch ($route) {
         $view = "view/show.php";
         break;
 }
-
-include $view;
+if ($redirect) {
+    header("Location: /" . $redirect);
+} else {
+    include $view;
+}

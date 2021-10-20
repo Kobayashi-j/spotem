@@ -17,24 +17,24 @@
 <body>
     <div class="border-b border-gray-200">
         <!--php:$_SERVER['HTTP_REFERER']実装-->
-        <a href="/?home" class="inline-block p-3">
+        <a href="/" class="inline-block p-3">
             <i class="fas fa-chevron-left"></i>
         </a>
     </div>
     <div class="pt-20 px-8">
         <p class="text-3xl text-center pb-10 font-serif"><a href="/">Spotem</a></p>
         <form action="/controller/sync/login.php" method="post">
-            <div class="flex flex-grow bg-gray-50 border border-gray-200 rounded-md">
+            <div class="flex flex-grow bg-gray-50 border border-gray-200 rounded-md mb-2">
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-at text-gray-500"></i>
                 </span>
                 <input type="text" name="unique" placeholder="ユーザーIDまたはメール" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" value="<?= $_GET["login"] ?>" required />
             </div>
-            <div class="flex flex-grow bg-gray-50 border border-gray-200 rounded-md mt-2">
+            <div class="flex flex-grow bg-gray-50 border border-gray-200 rounded-md">
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-lock text-gray-500"></i>
                 </span>
-                <input type="text" name="password" placeholder="パスワード（8文字以上の半角英数）" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" required />
+                <input type="password" name="password" placeholder="パスワード（8文字以上の半角英数）" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" required />
             </div>
             <div class="text-right mt-3">
                 <a href="" class="text-blue-900 text-sm">パスワードを忘れた場合</a>
@@ -43,9 +43,6 @@
         </form>
         <div class="text-xs text-gray-400 text-right">
             アカウントをお持ちでないですか？<a href="/?signup" class="text-blue-900">登録する</a>
-        </div>
-        <div class="text-xs text-gray-400 text-right mt-2">
-            企業の方は<a href="/?signup" class="text-blue-900">こちら</a>
         </div>
     </div>
     <!--

@@ -10,10 +10,9 @@
     <link rel="stylesheet" href="../view/css/all.min.css">
     <link rel="stylesheet" href="../view/css/tailwind.css">
     <script src="../view/js/jquery.js"></script>
-    <script src="../view/js/show.js" defer></script>
+    <script src="../view/js/show.js" type="module" defer></script>
 
     <title>Spotem / @<?= $route ?></title>
-
 </head>
 
 <body>

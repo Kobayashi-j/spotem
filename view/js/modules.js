@@ -154,7 +154,7 @@ export class Post {
 
 export class Mail {
 
-    static send(email, params) {
+    static send(address, title, body) {
         /* 
         */
 
@@ -164,8 +164,11 @@ export class Mail {
             type: "POST",
             url: "../controller/async/?mail=send",
             data: {
-                email: email,
-                params: params
+                email: address,
+                params: {
+                    title: title,
+                    body: body
+                }
             },
             dataType: "json"
         }).done(function (data) {

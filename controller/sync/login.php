@@ -17,15 +17,3 @@ if (!empty($res) && app\model\Hash::check($password, $res[0]["password"])) {
 }
 
 header('Location: ../../' . $location);
-
-/*
-$location = "top";
-if ($res) {
-    app\model\Alert::set('登録が完了しました。', 'success');
-    $_SESSION["userid"] = $userid;
-    $location = "home";
-} else {
-    app\model\Alert::set('登録に失敗しました。再度操作をお願いします。', 'danger');
-}
-
-header('Location: ../../' . $location);*/

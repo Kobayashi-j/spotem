@@ -18,7 +18,7 @@
     <div class="border-b border-gray-200">
         <!--php:$_SERVER['HTTP_REFERER']実装-->
         <a href="/?home" class="inline-block p-3">
-            <span class="mr-2"><i class="fas fa-arrow-left"></i></span>戻る
+            <i class="fas fa-chevron-left"></i>
         </a>
     </div>
     <div class="p-3">
