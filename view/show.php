@@ -82,7 +82,7 @@
      <div class="_profile">
         <div class="_square"></div>
         
-        <img class="_usericon" src="../view/img/user2.png" alt="ユーザーアイコン">
+        <img class="_usericon" src="../view/img/cafe.png" alt="ユーザーアイコン">
         <button class="_followbutton" type="submit">フォロー</button>
         <p class="_username">喫茶A</p>
         <div class="_profilebox">
