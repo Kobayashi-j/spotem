@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const colors = require('tailwindcss/colors')
 
 module.exports = {
@@ -966,6 +967,16 @@ module.exports = {
     width: ['responsive'],
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
+=======
+module.exports = {
+  purge: [],
+  darkMode: 'class', // or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+>>>>>>> 1985de217420107261e48c1564688d1f41bda505
   },
   plugins: [],
 }

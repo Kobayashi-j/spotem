@@ -23,6 +23,7 @@ export class User {
     /**
      * ユーザーが存在するかどうか
      * @param {string} unique ユーザー識別子（ユーザーID or メールアドレス）
+     * @return deferredオブジェクトdata{bool}既存であればtrue
      */
     static find(unique) {
         var deferred = new $.Deferred();
@@ -32,11 +33,11 @@ export class User {
             data: {
                 query: "SELECT COUNT(userid) FROM users WHERE userid = :key OR email = :key",
                 params: { key: unique }
-            }
+            },
+            dataType: "json"
         }).done(function (data) {
-            var data = JSON.parse(data);
             var flag = false;
-            if (data["COUNT(userid)"]) flag = true;
+            if (data[0]["COUNT(userid)"]) flag = true;
             deferred.resolve(flag);
         }).fail(function () {
             deferred.resolve(-1);
@@ -98,9 +99,9 @@ export const Hash = {
             url: "../controller/async/?hash=get",
             data: {
                 value: value
-            }
+            },
+            dataType: "json"
         }).done(function (data) {
-            var data = JSON.parse(data);
             deferred.resolve(data);
         }).fail(function () {
             deferred.resolve(-1);
@@ -117,7 +118,26 @@ export const Hash = {
             data: {
                 value: value,
                 hashed_value: hashed_value
-            }
+            },
+            dataType: "json"
+        }).done(function (data) {
+            deferred.resolve(data);
+        }).fail(function () {
+            deferred.resolve(-1);
+        });
+
+        return deferred;
+    }
+}
+
+export class Alert {
+    static get() {
+        var deferred = new $.Deferred();
+
+        $.ajax({
+            type: "POST",
+            url: "../controller/async/?alert=get",
+            dataType: "json"
         }).done(function (data) {
             deferred.resolve(data);
         }).fail(function () {
@@ -134,7 +154,7 @@ export class Post {
 
 export class Mail {
 
-    static send(email, params) {
+    static send(address, title, body) {
         /* 
         */
 
@@ -144,12 +164,14 @@ export class Mail {
             type: "POST",
             url: "../controller/async/?mail=send",
             data: {
-                email: email,
-                params: params
-            }
+                email: address,
+                params: {
+                    title: title,
+                    body: body
+                }
+            },
+            dataType: "json"
         }).done(function (data) {
-            console.log(data);
-            var data = JSON.parse(data);
             deferred.resolve(data);
         }).fail(function () {
             deferred.resolve(-1);
