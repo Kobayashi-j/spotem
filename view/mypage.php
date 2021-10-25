@@ -29,74 +29,16 @@
         </a>
     </div>
     <?php if (false) : ?>
-        <!--一般ユーザーのページ-->
-        <div class="_profile">
-            <div class="_square"></div>
-
-            <img class="_usericon" src="../view/img/cafe.png" alt="ユーザーアイコン">
-            <button class="_followbutton" type="submit">フォロー</button>
-            <p class="_username">naotoge5</p>
-            <div class="_profilebox">
-                <p class="_profiletext">滋賀県在住のnaotoge5です。<br>よろしくお願いします。</p>
-            </div>
-        </div>
-
-        <div class="_profiletabs _twotabs">
-            <input id="post" type="radio" name="_tab_item" checked>
-            <label class="_tab_item" for="post">投稿</label>
-
-            <input id="like" type="radio" name="_tab_item">
-            <label class="_tab_item" for="like">いいね</label>
-
-            <div class="_tab_content" id="post_content">
-                投稿を一覧表示
-                <br>
-                縦<br>
-                ス<br>
-                ク<br>
-                ロ<br>
-                ｜<br>
-                ル<br>
-                し<br>
-                ま<br>
-                す<br>
-                。<br>
-                1<br>
-                2<br>
-                3<br>
-                4<br>
-                5<br>
-                6<br>
-                7<br>
-                8<br>
-                9<br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                end
-            </div>
-            <div class="_tab_content" id="like_content">
-                いいねした投稿を一覧表示
-            </div>
-        </div>
 
     <?php else : ?>
         <div class="lg:px-64">
             <!--全体-->
             <div class="flex p-4 items-center">
-                <img class="w-20 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                <img class="w-20 border border-yellow-600 rounded-full" src="../view/img/naotoge5.png" alt="ユーザーアイコン">
                 <div class="ml-4 flex-grow">
-                    <p>ぎおん徳屋 - 本わらび餅</p>
-                    <p class="text-sm text-gray-600 mb-1"><span>@</span>gion-tokuya</p>
-                    <button class="w-3/4 lg:w-1/2 border border-yellow-600 rounded-3xl" type="button">フォロー中</button>
+                    <p>ST111111</p>
+                    <p class="text-sm text-gray-600 mb-1"><span>@</span>st111111</p>
+                    <button class="w-3/4 lg:w-1/2 border border-yellow-600 rounded-3xl" type="button">プロフィールを編集</button>
                 </div>
             </div>
             <div class="px-4">
@@ -105,28 +47,29 @@
                         <tr class="text-gray-600">
                             <td class="w-1/3">投稿</td>
                             <td>フォロワー</td>
-                            <!--<td>フォロー中</td>-->
+                            <td>フォロー中</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="w-1/3">123</td>
-                            <td>21</td>
-                            <!--<td>20</td>-->
+                            <td class="w-1/3">10</td>
+                            <td>11</td>
+                            <td>15</td>
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr class="text-gray-600">
                             <td class="w-1/3">件</td>
                             <td>人</td>
-                            <!--<td>人</td>-->
+                            <td>人</td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
             <div class="p-4">
-                <table class="w-full table-auto text-sm text-left">
-                    <!--店舗情報 - 変更不可［営業時間は除く］（申請が必要）-->
+                <!--
+                    <table class="w-full table-auto text-sm text-left">
+                    店舗情報 - 変更不可［営業時間は除く］（申請が必要）
                     <thead>
                         <tr>
                             <th>ぎおん徳屋</th>
@@ -147,22 +90,19 @@
                         </tr>
                     </tbody>
                 </table>
+                -->
             </div>
             <div class="px-4 text-xs">
-                芸妓さんや舞妓さんが行きかう祇園南、花見小路。紅殻格子に犬矢来の情緒溢れる街並みに佇む甘味処が「ぎおん徳屋」です。「ぎおん徳屋」が何よりも大切にしているのが素材の質。ふっくらと丁寧に炊き上げた大粒の丹波産大納言小豆を使ったぜんざいにおしるこ、国産の本わらび粉と和三盆糖で作るとろりとした食感のわらび餅。贅沢な素材そのものの持ち味を引き出すように工夫が重ねられたこだわりの甘味は、あっさりとした上品な味わい。専用のコンロを使って自分でお餅を焼くことができるのも好評で、いつもたくさんのお客さんで賑わっています。
+                カメラと食べ歩きが趣味です！
             </div>
         </div>
         <!--タブを追加する方式にするかどうか-->
-        <div class="_profiletabs">
+        <div class="_profiletabs _twotabs">
             <input id="post" type="radio" name="_tab_item" checked>
             <label class="_tab_item" for="post">投稿</label>
-            
 
-            <input id="coupon" type="radio" name="_tab_item">
-            <label class="_tab_item" for="coupon">キャンペーン</label>
-
-            <input id="photo" type="radio" name="_tab_item">
-            <label class="_tab_item" for="photo">写真</label>
+            <input id="like" type="radio" name="_tab_item">
+            <label class="_tab_item" for="like">いいね</label>
 
             <div class="_tab_content" id="post_content">
                 <section class="_content ">
@@ -170,12 +110,12 @@
                     <div class="columns">
                         <div class="column _icon">
                         <figure class="is-inline-block">
-                        <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                        <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/naotoge5.png" alt="ユーザーアイコン">
                         </figure>
                         </div>
                         <div class="column _name">
-                        <strong><a href="show.php">ぎおん徳屋 - 本わらび餅</a> </strong><br>
-                        <small><span>@</span>gion-tokuya</small>
+                        <strong><a href="">ST111111</a> </strong><br>
+                        <small><span>@</span>st111111</small>
                         </div>
                     </div>
 
@@ -212,7 +152,58 @@
                             </a>
                         </div>
                     </nav>
-                </section>    
+                </section>
+
+                <section class="_content ">
+                    <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+                    <div class="columns">
+                        <div class="column _icon">
+                        <figure class="is-inline-block">
+                        <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/naotoge5.png" alt="ユーザーアイコン">
+                        </figure>
+                        </div>
+                        <div class="column _name">
+                        <strong><a href="">ST111111</a> </strong><br>
+                        <small><span>@</span>st111111</small>
+                        </div>
+                    </div>
+
+                    <div class="_textcontent">
+                        <p>
+                            テキスト
+                            テキスト
+                        </p>
+                    </div>
+                    
+                    <div class="_imagecontent">
+                        <figure class="image is-image is-3by2">
+                            <img src="https://bulma.io/images/placeholders/480x320.png">
+                        </figure>
+                    </div>
+                    
+                    <div class="column _date">
+                        <small>2021/10/01 12:34</small>
+                    </div>
+                    
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                            <!--<a class="level-item">
+                                <small>位置情報</small>
+                                <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                                </a>-->
+                            <a class="level-item">
+                                <small>いいね</small>
+                                <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                            </a>
+                            <a class="level-item">
+                                <small>シェア</small>
+                            <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                            </a>
+                        </div>
+                    </nav>
+                </section>
+            </div>
+            <div class="_tab_content" id="like_content">
                 <section class="_content ">
                     <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
                     <div class="columns">
@@ -261,46 +252,61 @@
                         </div>
                     </nav>
                 </section>
-            </div>
-            <div class="_tab_content" id="coupon_content">
-                フェア・クーポンを一覧表示
-                <table class="_tabtable">
-                    <p>フェア情報</p>
-                    <tr>
-                        <th>内容</th>
-                        <td>期間限定商品AA</td>
-                    </tr>
-                    <tr>
-                        <th>期間</th>
-                        <td>2022年 1月1日~1月31日</td>
-                    </tr>
-                </table>
 
-                <table class="_tabtable">
-                    <p>クーポン</p>
-                    <tr>
-                        <th>内容</th>
-                        <td>AAセット200円OFF</td>
-                    </tr>
-                    <tr>
-                        <th>期間</th>
-                        <td>2022年 1月1日~1月31日</td>
-                    </tr>
-                    <tr>
-                        <th>利用条件</th>
-                        <td>14:00までにご来店のお客様限定です</td>
-                    </tr>
-                </table>
+                <section class="_content ">
+                    <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+                    <div class="columns">
+                        <div class="column _icon">
+                        <figure class="is-inline-block">
+                        <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                        </figure>
+                        </div>
+                        <div class="column _name">
+                        <strong><a href="">店舗名</a> </strong><br>
+                        <small>ユーザーID</small>
+                        </div>
+                    </div>
 
-            </div>
+                    <div class="_textcontent">
+                        <p>
+                            テキスト
+                            テキスト
+                        </p>
+                    </div>
+                    
+                    <div class="_imagecontent">
+                        <figure class="image is-image is-3by2">
+                            <img src="https://bulma.io/images/placeholders/480x320.png">
+                        </figure>
+                    </div>
+                    
+                    <div class="column _date">
+                        <small>2021/10/01 12:34</small>
+                    </div>
+                    
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                            <!--<a class="level-item">
+                                <small>位置情報</small>
+                                <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                                </a>-->
+                            <a class="level-item">
+                                <small>いいね</small>
+                                <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                            </a>
+                            <a class="level-item">
+                                <small>シェア</small>
+                            <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                            </a>
+                        </div>
+                    </nav>
+                </section>
 
-            <div class="_tab_content" id="info_content">
-                店舗情報を一覧表示
-            </div>
-            <div class="_tab_content" id="photo_content">
-                写真を一覧表示
             </div>
         </div>
+
+       
+        
     <?php endif; ?>
     <!-- Tabs -->
     <div id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">

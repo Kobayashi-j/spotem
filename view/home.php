@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href="../view/css/all.min.css">
     <link rel="stylesheet" href="../view/css/tailwind.css">
+    <link rel="stylesheet" href="../view/css/home.css">
     <script src="../view/js/jquery.js"></script>
     <script src="view/js/home.js" type="module" defer></script>
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=<?php //echo $_ENV['MAP_API_KEY'] 
@@ -30,87 +31,528 @@
             </div>
             <!--<input type="text" class="border border-yellow-600 rounded-full flex-auto m-2" placeholder="キーワード検索">-->
         </div>
-        <ul class="flex">
+
+        <!--<ul class="flex">
             <li class="w-full text-center cursor-pointer"><span class="inline-block p-3 border-b-2 border-yellow-600">公式</span></li>
             <li class="w-full text-center cursor-pointer"><span class="inline-block p-3">一般</span></li>
-        </ul>
-    </div>
-    <div>
-        <section class="tab-content">
-            <div class="media">
-                <figure class="media-left">
-                    <p class="image is-64x64">
-                        <img src="https://bulma.io/images/placeholders/128x128.png">
-                    </p>
+        </ul>-->
+
+    <div class="_hometabs" id="top">
+        <input id="oficial" type="radio" name="_tab_item" checked>
+        <label class="_tab_item" for="oficial"><p>店舗</p></label>
+
+        <input id="user" type="radio" name="_tab_item">
+        <label class="_tab_item" for="user"><p>一般</p></label>
+
+ 
+    <div class="_tab_contents" id="oficial_content">
+        <!--↓投稿1件につき-->
+        <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
                 </figure>
-                <div class="media-content">
-                    <div class="content">
-                        <p><strong>ジョウ</strong><br>
-                            こんにちは
-                        </p>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <small>位置情報</small>
-                                    <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                                </a>
-                                <a class="level-item">
-                                    <small>いいね</small>
-                                    <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                                </a>
-                                <a class="level-item">
-                                    <small>シェア</small><br>
-                                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
+                </div>
+                <div class="column _name">
+                <strong><a href="show.php">ぎおん徳屋 - 本わらび餅</a> </strong><br>
+                <small><span>@</span>gion-tokuya</small>
                 </div>
             </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
         </section>
-        投稿を一覧表示
-        <br>
-        縦<br>
-        ス<br>
-        ク<br>
-        ロ<br>
-        ｜<br>
-        ル<br>
-        し<br>
-        ま<br>
-        す<br>
-        。<br>
-        1<br>
-        2<br>
-        3<br>
-        4<br>
-        5<br>
-        6<br>
-        7<br>
-        8<br>
-        9<br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        end
+
+        <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                </figure>
+                </div>
+                <div class="column _name">
+                <strong><a href="">店舗名</a> </strong><br>
+                <small>ユーザーID</small>
+                </div>
+            </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
+        </section>
+
+        <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                </figure>
+                </div>
+                <div class="column _name">
+                <strong><a href="">店舗名</a> </strong><br>
+                <small>ユーザーID</small>
+                </div>
+            </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
+        </section>
+
+        <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                </figure>
+                </div>
+                <div class="column _name">
+                <strong><a href="">店舗名</a> </strong><br>
+                <small>ユーザーID</small>
+                </div>
+            </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
+        </section>
+
+        <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                </figure>
+                </div>
+                <div class="column _name">
+                <strong><a href="">店舗名</a> </strong><br>
+                <small>ユーザーID</small>
+                </div>
+            </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
+        </section>
+
+        <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                </figure>
+                </div>
+                <div class="column _name">
+                <strong><a href="">店舗名</a> </strong><br>
+                <small>ユーザーID</small>
+                </div>
+            </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
+        </section>
     </div>
-    <!-- Tabs -->
+
+    <!--こっちは一般ユーザー-->
+    <div class="_tab_contents" id="user_content">
+    <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                </figure>
+                </div>
+                <div class="column _name">
+                <strong><a href="">ST123456</a> </strong><br>
+                <small><span>@</span>st123456</small>
+                </div>
+            </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
+        </section>
+
+        <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                </figure>
+                </div>
+                <div class="column _name">
+                <strong><a href="">ユーザー名</a> </strong><br>
+                <small>ユーザーID</small>
+                </div>
+            </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
+        </section>
+
+        <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                </figure>
+                </div>
+                <div class="column _name">
+                <strong><a href="">ユーザー名</a> </strong><br>
+                <small>ユーザーID</small>
+                </div>
+            </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
+        </section>
+
+        <section class="_content ">
+            <!--なぜかculumnが横並びにならない　あきらめてcssで指定-->
+            <div class="columns">
+                <div class="column _icon">
+                <figure class="is-inline-block">
+                <img class="w-11 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                </figure>
+                </div>
+                <div class="column _name">
+                <strong><a href="">ユーザー名</a> </strong><br>
+                <small>ユーザーID</small>
+                </div>
+            </div>
+
+            <div class="_textcontent">
+                <p>
+                    テキスト
+                    テキスト
+                </p>
+            </div>
+            
+            <div class="_imagecontent">
+                <figure class="image is-image is-3by2">
+                    <img src="https://bulma.io/images/placeholders/480x320.png">
+                </figure>
+            </div>
+            
+            <div class="column _date">
+                <small>2021/10/01 12:34</small>
+            </div>
+            
+             <nav class="level is-mobile">
+                <div class="level-left">
+                    <!--<a class="level-item">
+                        <small>位置情報</small>
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                        </a>-->
+                    <a class="level-item">
+                        <small>いいね</small>
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <small>シェア</small>
+                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                </div>
+            </nav>
+        </section>
+
+
+    </div>
+    <!-- 下のTabs footer-->
     <div id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">
-        <a href="/?home" class="flex-grow flex items-center justify-center">
+        <a href="#top" class="flex-grow flex items-center justify-center">
             <i class="fas fa-home text-xl text-yellow-600"></i>
         </a>
-        <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
-            <img src="../view/img/user.png" alt="" class="inline-block w-8 rounded-full">
+        <!--自分のshowへ飛ぶように変えてください-->
+       
+        <a href="mypage.php" class="flex-grow flex items-center justify-center py-3">
+        <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full border border-yellow-600">
         </a>
-        <a href="/?new" class="flex-grow flex items-center justify-center">
+        <a href="new.php" class="flex-grow flex items-center justify-center">
             <i class="far fa-edit text-xl"></i>
         </a>
         <!--<img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">

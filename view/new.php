@@ -16,6 +16,7 @@
 
 <body>
     <div class="border-b border-gray-200">
+  
         <!--php:$_SERVER['HTTP_REFERER']実装-->
         <a href="/?home" class="inline-block p-3">
             <i class="fas fa-chevron-left"></i>

@@ -1,0 +1,97 @@
+/*ここからタブ*/
+/*タブ切り替え全体のスタイル*/
+._hometabs {
+    margin-top: 30px;
+    /*padding-bottom: 40px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 390px;
+    margin: 0 auto;*/
+  }
+  
+  /*タブのスタイル*/
+  ._tab_item {
+    width: calc(100%/2);
+    /*height: 50px;*/
+    border-bottom: 3px solid #a7a7a7;
+    background-color: #ffffff;
+    line-height: 50px;
+    font-size: 18px;
+    text-align: center;
+    color: #a7a7a7;
+    display: block;
+    float: left;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+  }
+
+  ._tab_item:hover {
+    opacity: 0.75;
+  }
+  
+  /*ラジオボタンを全て消す*/
+  input[name="_tab_item"] {
+    display: none;
+  }
+  
+  /*タブ切り替えの中身のスタイル*/
+  ._tab_contents {
+    display: none;
+    padding: 40px 40px 0;/*投稿の位置変更*/
+    margin-bottom: 70px;
+    clear: both;
+    /*height: 400px;*/
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE、Edgeでスクロールバーを非表示 */
+  }
+  
+  /*Chrome、Safariでスクロールバーを非表示*/
+  ._tab_contents::-webkit-scrollbar {
+    display:none;
+  }
+
+  /*選択されているタブのコンテンツのみを表示*/
+  #oficial:checked ~ #oficial_content,
+  #user:checked ~ #user_content{
+    display: block;
+  }
+  
+  /*選択されているタブのスタイルを変える*/
+  ._hometabs input:checked + ._tab_item {
+    border-bottom: 3px solid #d87533;
+    color: #d87533;
+
+  }
+
+  /*投稿*/
+  ._content{
+    padding-bottom: 40px;
+  }
+
+  .columns .column{
+      float: left;
+  }
+
+  ._name{
+    line-height: 20px;
+    font-size: small;
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+  
+  ._name a:hover{
+    color: #d87533;
+    
+  }
+
+  small{
+    color: #2c2c2c;
+  }
+
+  ._textcontent{
+    padding: 10px 0;
+    clear: both;
+    font-size: small;
+  }
+
