@@ -15,22 +15,37 @@ $(function () {
         var userid = $("input[name='userid']").val();
         //値が入力されていない場合
         if (userid.length == 0) return;
-        if (userid.match(/[^A-Za-z0-9]+/)) {
-            $(".j-userid-help").text('特殊文字不可');
-        } else {
-            var deferred = User.find(userid);
-            //Deferredオブジェクトを監視し、完了の通知がきたらdone内を実行
-            deferred.done(function (data) {
-                if (data) {
-                    $(".j-userid-help").text('既に使用されています。');
+        switch (userid) {
+            case 'top':
+            case 'login':
+            case 'signup':
+            case 'home':
+            case 'info':
+            case 'search':
+            case 'new':
+            case 'show':
+            case 'settings':
+                $(".j-userid-help").text('利用不可');
+                break;
+            default:
+                if (userid.match(/[^A-Za-z0-9\-_]+/)) {
+                    $(".j-userid-help").text('特殊文字不可');
                 } else {
-                    $(".j-userid-check").removeClass("invisible");
-                    if (!$(".j-name-check").hasClass("invisible")) {
-                        $(".j-submit").removeClass("cursor-not-allowed");
-                        $(".j-submit").prop('disabled', false);
-                    }
+                    var deferred = User.find(userid);
+                    //Deferredオブジェクトを監視し、完了の通知がきたらdone内を実行
+                    deferred.done(function (data) {
+                        if (data) {
+                            $(".j-userid-help").text('既に使用されています。');
+                        } else {
+                            $(".j-userid-check").removeClass("invisible");
+                            if (!$(".j-name-check").hasClass("invisible")) {
+                                $(".j-submit").removeClass("cursor-not-allowed");
+                                $(".j-submit").prop('disabled', false);
+                            }
+                        }
+                    });
                 }
-            });
+                break;
         }
     });
 

@@ -45,27 +45,6 @@
             アカウントをお持ちでないですか？<a href="/?signup" class="text-blue-900">登録する</a>
         </div>
     </div>
-    <!--
-        <form action="controller/auth.php" method="post">
-            <div class="field mb-5">
-                <div class="control has-icons-left">
-                    <input class="input is-medium is-rounded" type="text" name="unique" placeholder="ユーザーIDまたはメール" required>
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-at"></i>
-                    </span>
-                </div>
-            </div>
-            <div class="field mb-5">
-                <div class="control has-icons-left">
-                    <input class="input is-medium is-rounded" type="password" name="password" placeholder="パスワード（8文字以上の半角英数）" required>
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                    </span>
-                </div>
-            </div>
-            <button class="input button is-rounded is-success" type="submit">ログイン</button>
-        </form>
-    </div>-->
     <footer class="fixed bottom-0 w-full">
         <div class="py-5 bg-gray-100 border-t border-gray-200 pr-6 text-right text-xs">
             <span><i class="far fa-copyright"></i>&nbsp;</span>Kyoto-Computer-Gakuin

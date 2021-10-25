@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="../view/css/all.min.css">
     <link rel="stylesheet" href="../view/css/tailwind.css">
     <script src="../view/js/jquery.js"></script>
@@ -17,8 +17,9 @@
 </head>
 
 <body>
-    <div class="sticky top-0 w-full bg-white border-b border-gray-200">
-        <div class="flex w-full p-3">
+    <!-- メニューアイコン&検索窓&タブ -->
+    <div class="sticky top-0 w-full bg-white lg:px-64">
+        <div class="flex w-full p-4">
             <div class="flex items-center justify-center mr-2">
                 <i class="fas fa-sliders-h text-gray-700 text-2xl p-1"></i>
             </div>
@@ -30,93 +31,104 @@
             </div>
             <!--<input type="text" class="border border-yellow-600 rounded-full flex-auto m-2" placeholder="キーワード検索">-->
         </div>
-        <ul class="flex">
-            <li class="w-full text-center cursor-pointer"><span class="inline-block p-3 border-b-2 border-yellow-600">公式</span></li>
-            <li class="w-full text-center cursor-pointer"><span class="inline-block p-3">一般</span></li>
+        <ul id="" class="flex w-full text-center text-sm">
+            <li class="flex-grow py-3 border-b-2 border-yellow-600">公式</li>
+            <li class="flex-grow py-3 border-b-2 border-gray-200">一般</li>
         </ul>
     </div>
-    <div>
-        <section class="tab-content">
-            <div class="media">
-                <figure class="media-left">
-                    <p class="image is-64x64">
-                        <img src="https://bulma.io/images/placeholders/128x128.png">
-                    </p>
-                </figure>
-                <div class="media-content">
-                    <div class="content">
-                        <p><strong>ジョウ</strong><br>
-                            こんにちは
-                        </p>
-                        <nav class="level is-mobile">
-                            <div class="level-left">
-                                <a class="level-item">
-                                    <small>位置情報</small>
-                                    <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                                </a>
-                                <a class="level-item">
-                                    <small>いいね</small>
-                                    <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                                </a>
-                                <a class="level-item">
-                                    <small>シェア</small><br>
-                                    <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                                </a>
-                            </div>
-                        </nav>
-                    </div>
+    <!-- 投稿一覧 -->
+    <div class="lg:px-64">
+        <div class="p-2 border-b border-gray-200">
+            <div class="flex items-center p-2">
+                <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                <div class="ml-4 flex-grow">
+                    <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                    <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
                 </div>
             </div>
-        </section>
-        投稿を一覧表示
-        <br>
-        縦<br>
-        ス<br>
-        ク<br>
-        ロ<br>
-        ｜<br>
-        ル<br>
-        し<br>
-        ま<br>
-        す<br>
-        。<br>
-        1<br>
-        2<br>
-        3<br>
-        4<br>
-        5<br>
-        6<br>
-        7<br>
-        8<br>
-        9<br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        end
+            <div>本日は臨時休業です。</div>
+            <i class="far fa-heart"></i><i class="far fa-heart"></i>
+        </div>
+        <div class="p-2 border-b border-gray-200">
+            <div class="flex items-center p-2">
+                <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                <div class="ml-4 flex-grow">
+                    <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                    <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                </div>
+            </div>
+            <div>本日は臨時休業です。</div>
+            <i class="far fa-heart"></i><i class="far fa-heart"></i>
+        </div>
+        <div class="p-2 border-b border-gray-200">
+            <div class="flex items-center p-2">
+                <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                <div class="ml-4 flex-grow">
+                    <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                    <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                </div>
+            </div>
+            <div>本日は臨時休業です。</div>
+            <i class="far fa-heart"></i><i class="far fa-heart"></i>
+        </div>
+        <div class="p-2 border-b border-gray-200">
+            <div class="flex items-center p-2">
+                <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                <div class="ml-4 flex-grow">
+                    <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                    <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                </div>
+            </div>
+            <div>本日は臨時休業です。</div>
+            <i class="far fa-heart"></i><i class="far fa-heart"></i>
+        </div>
+        <div class="p-2 border-b border-gray-200">
+            <div class="flex items-center p-2">
+                <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                <div class="ml-4 flex-grow">
+                    <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                    <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                </div>
+            </div>
+            <div>本日は臨時休業です。</div>
+            <i class="far fa-heart"></i><i class="far fa-heart"></i>
+        </div>
+        <div class="p-2 border-b border-gray-200">
+            <div class="flex items-center p-2">
+                <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                <div class="ml-4 flex-grow">
+                    <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                    <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                </div>
+            </div>
+            <div>本日は臨時休業です。</div>
+            <i class="far fa-heart"></i><i class="far fa-heart"></i>
+        </div>
+        <div class="p-2 border-b border-gray-200">
+            <div class="flex items-center p-2">
+                <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                <div class="ml-4 flex-grow">
+                    <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                    <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                </div>
+            </div>
+            <div>本日は臨時休業です。</div>
+            <i class="far fa-heart"></i><i class="fas fa-map-marker-alt"></i>
+        </div>
     </div>
-    <!-- Tabs -->
-    <div id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">
-        <a href="/?home" class="flex-grow flex items-center justify-center">
-            <i class="fas fa-home text-xl text-yellow-600"></i>
-        </a>
-        <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
-            <img src="../view/img/user.png" alt="" class="inline-block w-8 rounded-full">
-        </a>
-        <a href="/?new" class="flex-grow flex items-center justify-center">
-            <i class="far fa-edit text-xl"></i>
-        </a>
-        <!--<img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
-        <li class="w-full"><a href="/?search" class="block w-full text-center py-3 bg-yellow-500 text-white"><i class="far fa-search"></i></a></li>
-        <li class="w-full"><a href="/?settings" class="block w-full text-center py-3 bg-yellow-50 hover:bg-yellow-100 text-gray-500"><i class="fas fa-user-circle"></i></a></li>
-        -->
+    <!-- メニュータブ -->
+    <div class="fixed w-full bottom-0 lg:px-64">
+        <div id="" class="flex w-full bg-white border-t border-yellow-200">
+            <a href="/?home" class="flex-grow flex items-center justify-center">
+                <i class="fas fa-home text-xl text-yellow-600"></i>
+            </a>
+            <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
+                <img src="../view/img/user.png" alt="" class="inline-block w-8 rounded-full">
+            </a>
+            <a href="/?new" class="flex-grow flex items-center justify-center">
+                <i class="far fa-edit text-xl"></i>
+            </a>
+        </div>
     </div>
 </body>
 

@@ -1,5 +1,3 @@
-<!--ゲスト側マイページ-->
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -22,15 +20,14 @@
         &nbsp;
     </div>
     -->
-
+    <div class="border-b border-gray-200">
+        <!--php:$_SERVER['HTTP_REFERER']実装-->
+        <a href="/?home" class="inline-block p-3">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+    </div>
 
     <div class="lg:px-64">
-        <div class="border-b border-gray-200">
-            <!--php:$_SERVER['HTTP_REFERER']実装-->
-            <a href="/?home" class="inline-block p-3">
-                <i class="fas fa-chevron-left"></i>
-            </a>
-        </div>
         <!--全体-->
         <div class="flex px-4 pt-4 pb-2 items-center">
             <img class="w-20 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
@@ -100,7 +97,7 @@
             </table>
         </div>
         <ul id="" class="flex w-full text-center text-sm">
-            <li class="flex-grow py-3 border-b-2 border-yellow-600">投稿</li>
+            <li class="flex-grow py-3 border-b-2 border-yellow-500">投稿</li>
             <li class="flex-grow py-3 border-b-2 border-gray-200">メディア</li>
             <li class="flex-grow py-3 border-b-2 border-gray-200">いいね</li>
         </ul>
@@ -163,21 +160,22 @@
                 写真を一覧表示
             </div>
         </div>-->
-    <!-- メニュータブ -->
+    <!-- Tabs -->
     <!-- Guest or Admin -->
-
-    <div class="fixed w-full bottom-0 lg:px-64">
-        <div id="" class="flex w-full bg-white border-t border-yellow-200">
-            <a href="/?home" class="flex-grow flex items-center justify-center">
-                <i class="fas fa-home text-xl <?= ($_SESSION["userid"] !== $account["userid"]) ? 'text-yellow-600' : '' ?>"></i>
-            </a>
-            <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
-                <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full <?= ($_SESSION["userid"] === $account["userid"]) ? 'border border-yellow-600' : '' ?>">
-            </a>
-            <a href="/?new" class="flex-grow flex items-center justify-center">
-                <i class="far fa-edit text-xl"></i>
-            </a>
-        </div>
+    <div id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">
+        <a href="/?home" class="flex-grow flex items-center justify-center">
+            <i class="fas fa-home text-xl <?= ($_SESSION["userid"] !== $account["userid"]) ? 'text-yellow-600' : '' ?>"></i>
+        </a>
+        <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
+            <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full <?= ($_SESSION["userid"] === $account["userid"]) ? 'border border-yellow-600' : '' ?>">
+        </a>
+        <a href="/?new" class="flex-grow flex items-center justify-center">
+            <i class="far fa-edit text-xl"></i>
+        </a>
+        <!--<img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
+        <li class="w-full"><a href="/?search" class="block w-full text-center py-3 bg-yellow-500 text-white"><i class="far fa-search"></i></a></li>
+        <li class="w-full"><a href="/?settings" class="block w-full text-center py-3 bg-yellow-50 hover:bg-yellow-100 text-gray-500"><i class="fas fa-user-circle"></i></a></li>
+        -->
     </div>
 </body>
 

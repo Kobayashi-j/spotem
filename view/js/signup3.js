@@ -5,7 +5,7 @@ let Code = 0;
 
 $(function () {
     var email = $("input[name='email']").val();
-    Code = Math.ceil(Math.random() * 1000000);
+    Code = ("0000000" + Math.floor(Math.random() * 1000000)).slice(-6);
     var title = '認証コードのご案内';
     var body = '認証コード：' + Code + '\n\nこの番号を認証コード入力画面で入力してください。';
     var deferred = Mail.send(email, title, body);
