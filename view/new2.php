@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../view/css/tailwind.css">
     <script src="../view/js/jquery.js"></script>
     <script async src="https://maps.googleapis.com/maps/api/js?key=<?= $_ENV['MAP_API_KEY'] ?>&libraries=places"></script>
-    <script src="../view/js/new.js"></script>
+    <script src="../view/js/new2.js"></script>
 
     <title>新規作成</title>
 </head>
@@ -22,9 +22,9 @@
             新規投稿
         </div>
         <!--php:$_SERVER['HTTP_REFERER']実装-->
-        <a href="/?home" class="absolute top-0 p-3">
+        <p class="absolute top-0 p-3 cursor-pointer j-back">
             <i class="fas fa-chevron-left"></i>
-        </a>
+        </p>
     </div>
     <!--
     <div class="p-3">
@@ -36,17 +36,24 @@
     -->
     <div class="pt-20 lg:px-64 px-4">
         <form action="/?new=2" method="post">
-            <input type="hidden" name="place_id">
-            <input type="hidden" name="place">
-            <div class="flex bg-gray-50 border border-gray-200 rounded-md mb-2">
-                <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
-                    <i class="fas fa-map-marker-alt text-gray-500"></i>
-                </span>
-                <input type="text" name="keyword" placeholder="場所を検索" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" value="<?= isset($_POST["place"]) ? $_POST["place"] : '' ?>" required />
+            <input type="hidden" name="place_id" value="<?= $_POST["place_id"] ?>">
+            <input type="hidden" name="place" value="<?= $_POST["place"] ?>">
+            <textarea name="body" rows="10" class="outline-none bg-transparent resize-none w-full" placeholder="内容"></textarea>
+            <div class="flex border-t border-gray-200">
+                <label class="ml-4 my-2">
+                    <span title="ファイルを選択">
+                        <i class="far fa-image text-gray-600"></i>
+                    </span>
+                    <input type="file" name="image" class="hidden">
+                </label>
+                <label class="ml-4 my-2 cursor-pointer">
+                    <span title="ファイルを選択">
+                        <i class="fas fa-map-marker-alt text-gray-600"></i>
+                    </span>
+                    <span class="text-xs"><?= $_POST["place"] ?></span>
+                </label>
             </div>
-            <ul class="j-autocomplete border rounded-md border-gray-200 cursor-pointer hidden">
-            </ul>
-            <input type="button" value="次へ" class="mt-4 mb-20 py-2 px-4 bg-gray-400 text-white border border-gray-200 rounded-2xl float-right j-submit" disabled onclick="submit();" />
+            <input type="button" value="投稿する" class="mt-4 mb-20 py-2 px-4 bg-gray-400 text-white border border-gray-200 rounded-2xl float-right j-submit" disabled onclick="submit();" />
         </form>
     </div>
 

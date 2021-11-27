@@ -1,3 +1,4 @@
+<?php include "controller/include/apply.php" ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -5,178 +6,123 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="../view/css/all.min.css">
     <link rel="stylesheet" href="../view/css/tailwind.css">
     <script src="../view/js/jquery.js"></script>
-    <script src="../view/js/show.js" type="module" defer></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=<?= $_ENV['MAP_API_KEY'] ?>&libraries=places"></script>
+    <script src="../view/js/apply.js" type="module" defer></script>
 
-    <title>Spotem / @<?= $route ?></title>
+    <title>新規登録 / Spotem</title>
 </head>
 
 <body>
-    <?php include "controller/include/show.php" ?>
-    <!--
-    <div class="bg-yellow-600 py-5">
-        &nbsp;
+    <div class="border-b border-gray-200 text-center py-3 font-bold">
+        公式申請
     </div>
-    -->
-    <div class="border-b border-gray-200">
-        <!--php:$_SERVER['HTTP_REFERER']実装-->
-        <a href="/?home" class="inline-block p-3">
-            <i class="fas fa-chevron-left"></i>
-        </a>
-    </div>
+    <!--php:$_SERVER['HTTP_REFERER']実装-->
+    <a href="/?home" class="absolute top-0 p-3">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    <div class="pt-20 px-8">
+        <form action="/" method="post">
+            <p class="text-lg font-bold border-l-8 border-yellow-900 pl-2">営業許可証の登録</p>
+            <hr class="border-yellow-900 my-2">
+            <p class="p-2">
+                <label class="text-blue-900">
+                    <span title="ファイルを選択">
+                        <i class="far fa-image"></i>
+                    </span>
+                    <input type="file" name="accept_image" accept=".png, .jpg, .jpeg, .pdf" class="hidden">
+                    画像の選択
+                </label>
+            </p>
+            <div id="Preview" class="px-2 pt-2"></div>
 
-    <div class="lg:px-64">
-        <!--全体-->
-        <div class="flex px-4 pt-4 pb-2 items-center">
-            <img class="w-20 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
-            <div class="ml-4 flex-grow">
-                <p><?= $account["name"] ?></p>
-                <p class="text-sm text-gray-600 mb-1"><span>@</span><?= $account["userid"] ?></p>
-                <?php if ($_SESSION["userid"] === $account["userid"]) : ?>
-                    <a href="/?settings" class="block text-center w-3/4 lg:w-1/2 border border-yellow-600 rounded-3xl">編集</a>
-                <?php else : ?>
-                    <button class="w-3/4 lg:w-1/2 border border-yellow-600 rounded-3xl" type="button">フォロー</button>
-                <?php endif; ?>
-            </div>
+            <p class="text-lg font-bold border-l-8 border-yellow-900 pl-2 mt-6">店舗情報</p>
+            <hr class="border-yellow-900 my-2">
+            <p class="m-2 font-bold">店舗名</p>
+            <input type="text" name="store_name" placeholder="" class="w-5/6 ml-2 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["store_name"]) ? $_POST["store_name"] : '' ?>" required />
+            <p class="m-2 font-bold">電話番号</p>
+            <input type="text" name="tel1" maxlength="4" pattern="\d{2,4}" class="w-1/5 ml-2 mr-1 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["tel1"]) ? $_POST["tel1"] : '' ?>" required />
+            -
+            <input type="text" name="tel2" maxlength="4" pattern="\d{3,4}" class="w-1/5 mx-1 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["tel2"]) ? $_POST["tel2"] : '' ?>" required />
+            -
+            <input type="text" name="tel3" maxlength="4" pattern="\d{3,4}" class="w-1/5 ml-1 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["tel3"]) ? $_POST["tel3"] : '' ?>" required />
+            <p class="m-2 font-bold">郵便番号</p>
+            <!-- \d{3}-\d{4} -->
+            <input type="text" name="postal1" maxlength="3" pattern="\d{3}" class="w-1/5 ml-2 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["postal"]) ? $_POST["postal"] : '' ?>" required />
+            -
+            <input type="text" name="postal2" maxlength="4" pattern="\d{4}" class="w-1/3 ml-2 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["postal"]) ? $_POST["postal"] : '' ?>" required />
+            <button type="button" class="ml-2 px-2 py-1 bg-yellow-300 hover:bg-yellow-400 border-gray-300 rounded-md j-auto_address">住所検索</button>
+            <p class="m-2 font-bold">都道府県</p>
+            <select name="prefecture" class="ml-2 border border-gray-200" required>
+                <option value="" selected="selected">選択してください</option>
+                <option value="北海道">北海道</option>
+                <option value="青森県">青森県</option>
+                <option value="岩手県">岩手県</option>
+                <option value="宮城県">宮城県</option>
+                <option value="秋田県">秋田県</option>
+                <option value="山形県">山形県</option>
+                <option value="福島県">福島県</option>
+                <option value="茨城県">茨城県</option>
+                <option value="栃木県">栃木県</option>
+                <option value="群馬県">群馬県</option>
+                <option value="埼玉県">埼玉県</option>
+                <option value="千葉県">千葉県</option>
+                <option value="東京都">東京都</option>
+                <option value="神奈川県">神奈川県</option>
+                <option value="新潟県">新潟県</option>
+                <option value="富山県">富山県</option>
+                <option value="石川県">石川県</option>
+                <option value="福井県">福井県</option>
+                <option value="山梨県">山梨県</option>
+                <option value="長野県">長野県</option>
+                <option value="岐阜県">岐阜県</option>
+                <option value="静岡県">静岡県</option>
+                <option value="愛知県">愛知県</option>
+                <option value="三重県">三重県</option>
+                <option value="滋賀県">滋賀県</option>
+                <option value="京都府">京都府</option>
+                <option value="大阪府">大阪府</option>
+                <option value="兵庫県">兵庫県</option>
+                <option value="奈良県">奈良県</option>
+                <option value="和歌山県">和歌山県</option>
+                <option value="鳥取県">鳥取県</option>
+                <option value="島根県">島根県</option>
+                <option value="岡山県">岡山県</option>
+                <option value="広島県">広島県</option>
+                <option value="山口県">山口県</option>
+                <option value="徳島県">徳島県</option>
+                <option value="香川県">香川県</option>
+                <option value="愛媛県">愛媛県</option>
+                <option value="高知県">高知県</option>
+                <option value="福岡県">福岡県</option>
+                <option value="佐賀県">佐賀県</option>
+                <option value="長崎県">長崎県</option>
+                <option value="熊本県">熊本県</option>
+                <option value="大分県">大分県</option>
+                <option value="宮崎県">宮崎県</option>
+                <option value="鹿児島県">鹿児島県</option>
+                <option value="沖縄県">沖縄県</option>
+            </select>
+            <p class="m-2 font-bold">市区町村</p>
+            <input type="text" name="city" class="w-4/5 ml-2 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["store_name"]) ? $_POST["store_name"] : '' ?>" required />
+            <p class="m-2 font-bold">町名番地</p>
+            <input type="text" name="town" class="w-4/5 ml-2 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["store_name"]) ? $_POST["store_name"] : '' ?>" required />
+
+            <p class="text-lg font-bold border-l-8 border-yellow-900 pl-2 mt-6">その他</p>
+            <input type="submit" class="w-full my-6 py-1 bg-yellow-300 rounded-md" value="確認" />
+        </form>
+        <div class="text-xs text-gray-400 text-right mt-2">
+            企業の方は<a href="/" class="text-blue-900">こちら</a>
         </div>
-        <?php if ($account["is_official"]) : ?>
-            <div class="px-4 py-2">
-                <table class="w-full table-auto text-sm text-left">
-                    <!--店舗情報 - 変更不可［営業時間は除く］（申請が必要）-->
-                    <thead>
-                        <tr>
-                            <th>ぎおん徳屋</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><span>&#12306;&nbsp;</span>605-0074</td>
-                        </tr>
-                        <tr>
-                            <td>京都府京都市東山区祇園町南側570-127</td>
-                        </tr>
-                        <tr>
-                            <td><span>TEL&nbsp;</span><a href="tel:" class="underline text-blue-900">075-561-5554</a></td>
-                        </tr>
-                        <tr>
-                            <td><span>営業時間&nbsp;</span>12:00 - 18:00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        <?php endif; ?>
-        <div class="px-4 py-2 text-xs">
-            <?= $account["comment"] ?>
-            趣味
-        </div>
-        <div class="px-4 py-2 border-t border-b border-gray-100">
-            <table class="w-full table-fixed text-xs text-center">
-                <thead>
-                    <tr class="text-gray-600">
-                        <td class="w-1/3">投稿</td>
-                        <td>フォロワー</td>
-                        <td>フォロー中</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="w-1/3">123</td>
-                        <td>21</td>
-                        <td>20</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr class="text-gray-600">
-                        <td class="w-1/3">件</td>
-                        <td>人</td>
-                        <td>人</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <ul id="" class="flex w-full text-center text-sm">
-            <li class="flex-grow py-3 border-b-2 border-yellow-500">投稿</li>
-            <li class="flex-grow py-3 border-b-2 border-gray-200">メディア</li>
-            <li class="flex-grow py-3 border-b-2 border-gray-200">いいね</li>
-        </ul>
     </div>
-    <!--
-        <i class="fas fa-utensils"></i> 飲食
-        <i class="fas fa-store-alt"></i> お店
-        <i class="fas fa-landmark"></i> 
-    -->
-    <!--
-        <div class="_profiletabs">
-            <input id="post" type="radio" name="_tab_item" checked>
-            <label class="_tab_item" for="post">投稿</label>
-
-            <input id="coupon" type="radio" name="_tab_item">
-            <label class="_tab_item" for="coupon">キャンペーン</label>
-
-            <input id="photo" type="radio" name="_tab_item">
-            <label class="_tab_item" for="photo">写真</label>
-
-            <div class="_tab_content" id="post_content">
-                投稿を一覧表示
-            </div>
-            <div class="_tab_content" id="coupon_content">
-                フェア・クーポンを一覧表示
-                <table class="_tabtable">
-                    <p>フェア情報</p>
-                    <tr>
-                        <th>内容</th>
-                        <td>期間限定商品AA</td>
-                    </tr>
-                    <tr>
-                        <th>期間</th>
-                        <td>2022年 1月1日~1月31日</td>
-                    </tr>
-                </table>
-
-                <table class="_tabtable">
-                    <p>クーポン</p>
-                    <tr>
-                        <th>内容</th>
-                        <td>AAセット200円OFF</td>
-                    </tr>
-                    <tr>
-                        <th>期間</th>
-                        <td>2022年 1月1日~1月31日</td>
-                    </tr>
-                    <tr>
-                        <th>利用条件</th>
-                        <td>14:00までにご来店のお客様限定です</td>
-                    </tr>
-                </table>
-
-            </div>
-
-            <div class="_tab_content" id="info_content">
-                店舗情報を一覧表示
-            </div>
-            <div class="_tab_content" id="photo_content">
-                写真を一覧表示
-            </div>
-        </div>-->
-    <!-- Tabs -->
-    <!-- Guest or Admin -->
-    <div id="" class="flex w-full bg-white fixed bottom-0 border-t border-gray-200">
-        <a href="/?home" class="flex-grow flex items-center justify-center">
-            <i class="fas fa-home text-xl <?= ($_SESSION["userid"] !== $account["userid"]) ? 'text-yellow-600' : '' ?>"></i>
-        </a>
-        <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
-            <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full <?= ($_SESSION["userid"] === $account["userid"]) ? 'border border-yellow-600' : '' ?>">
-        </a>
-        <a href="/?new" class="flex-grow flex items-center justify-center">
-            <i class="far fa-edit text-xl"></i>
-        </a>
-        <!--<img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full">
-        <li class="w-full"><a href="/?search" class="block w-full text-center py-3 bg-yellow-500 text-white"><i class="far fa-search"></i></a></li>
-        <li class="w-full"><a href="/?settings" class="block w-full text-center py-3 bg-yellow-50 hover:bg-yellow-100 text-gray-500"><i class="fas fa-user-circle"></i></a></li>
-        -->
-    </div>
+    <footer>
+        <div class="py-5 bg-gray-100 border-t border-gray-200 pr-6 text-right text-xs">
+            <span><i class="far fa-copyright"></i>&nbsp;</span>Kyoto-Computer-Gakuin
+        </div>
+    </footer>
 </body>
 
 </html>

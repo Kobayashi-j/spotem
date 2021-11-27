@@ -1,7 +1,7 @@
 <!--ゲスト側マイページ-->
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="">
 
 <head>
     <meta charset="UTF-8">
@@ -11,32 +11,35 @@
     <link rel="stylesheet" href="../view/css/tailwind.css">
     <script src="../view/js/jquery.js"></script>
     <script src="../view/js/show.js" type="module" defer></script>
+    <script src="../view/js/tab.js" type="module" defer></script>
 
     <title>Spotem / @<?= $route ?></title>
+
+    <style>
+        #tab1:checked~#tab1-content,
+        #tab2:checked~#tab2-content {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
     <?php include "controller/include/show.php" ?>
-    <!--
-    <div class="bg-yellow-600 py-5">
-        &nbsp;
-    </div>
-    -->
-
-
-    <div class="lg:px-64">
-        <div class="border-b border-gray-200">
+    <div class="lg:px-64 dark:bg-black dark:text-white">
+        <?php if ($_SESSION["userid"] !== $account["userid"]) : ?>
+            <div class="border-b border-gray-400 text-center py-3 font-bold">
+                <?= $account["userid"] ?>
+            </div>
             <!--php:$_SERVER['HTTP_REFERER']実装-->
-            <a href="/?home" class="inline-block p-3">
+            <a href="/?home" class="absolute top-0 p-3">
                 <i class="fas fa-chevron-left"></i>
             </a>
-        </div>
-        <!--全体-->
+        <?php endif; ?>
         <div class="flex px-4 pt-4 pb-2 items-center">
             <img class="w-20 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
-            <div class="ml-4 flex-grow">
-                <p><?= $account["name"] ?></p>
-                <p class="text-sm text-gray-600 mb-1"><span>@</span><?= $account["userid"] ?></p>
+            <div class="ml-4 flex-grow dark:text-white">
+                <p class="font-bold"><?= $account["name"] ?></p>
+                <p class="text-sm text-gray-400 mb-1">@<?= $account["userid"] ?></p>
                 <?php if ($_SESSION["userid"] === $account["userid"]) : ?>
                     <a href="/?settings" class="block text-center w-3/4 lg:w-1/2 border border-yellow-600 rounded-3xl">編集</a>
                 <?php else : ?>
@@ -74,24 +77,24 @@
             <?= $account["comment"] ?>
             趣味
         </div>
-        <div class="px-4 py-2 border-t border-b border-gray-100">
+        <div class="px-4 py-2 border-t border-b border-gray-400">
             <table class="w-full table-fixed text-xs text-center">
                 <thead>
-                    <tr class="text-gray-600">
+                    <tr class="text-gray-400">
                         <td class="w-1/3">投稿</td>
                         <td>フォロワー</td>
                         <td>フォロー中</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="dark:text-white">
                         <td class="w-1/3">123</td>
                         <td>21</td>
                         <td>20</td>
                     </tr>
                 </tbody>
                 <tfoot>
-                    <tr class="text-gray-600">
+                    <tr class="text-gray-400">
                         <td class="w-1/3">件</td>
                         <td>人</td>
                         <td>人</td>
@@ -99,11 +102,450 @@
                 </tfoot>
             </table>
         </div>
-        <ul id="" class="flex w-full text-center text-sm">
-            <li class="flex-grow py-3 border-b-2 border-yellow-600">投稿</li>
-            <li class="flex-grow py-3 border-b-2 border-gray-200">メディア</li>
-            <li class="flex-grow py-3 border-b-2 border-gray-200">いいね</li>
+        <ul class="sticky top-0 bg-white dark:bg-black dark:text-white flex text-center text-sm  overflow-x-scroll cursor-pointer border-b border-gray-400 j-tabs">
+            <li class="px-6 py-4 border-b-2 border-yellow-600 flex-grow whitespace-nowrap" data-tab="1">投稿</li>
+            <li class="px-6 py-4 flex-grow whitespace-nowrap" data-tab="2">いいね</li>
+            <?php if ($account["is_official"]) : ?>
+                <li class="px-6 py-4 flex-grow whitespace-nowrap" data-tab="3">メニュー</li>
+                <li class="px-6 py-4 flex-grow whitespace-nowrap" data-tab="4">アクセス</li>
+            <?php endif; ?>
         </ul>
+        <div id="tab1" class="">
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div id="tab2" class="hidden">
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div id="tab3" class="hidden">
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+            <div class="p-2 border-b border-gray-400">
+                <div class="flex items-center p-2">
+                    <img class="w-10 border border-yellow-600 rounded-full" src="../view/img/user.png" alt="ユーザーアイコン">
+                    <div class="ml-4 flex-grow">
+                        <p class="font-bold">ぎおん徳屋&nbsp;<i class="text-sm fas fa-utensils"></i></p>
+                        <p class="text-sm text-gray-600"><span>@</span>gion-tokuya</p>
+                    </div>
+                </div>
+                <div class="pl-16 pr-2">
+                    <p>本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。本日は臨時休業です。</p>
+                    <i class="far fa-heart"></i><i class="far fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div class="hidden">いいねの内容</div>
     </div>
     <!--
         <i class="fas fa-utensils"></i> 飲食
@@ -167,15 +609,15 @@
     <!-- Guest or Admin -->
 
     <div class="fixed w-full bottom-0 lg:px-64">
-        <div id="" class="flex w-full bg-white border-t border-yellow-200">
+        <div id="" class="flex w-full bg-white dark:bg-black border-t border-gray-400">
             <a href="/?home" class="flex-grow flex items-center justify-center">
-                <i class="fas fa-home text-xl <?= ($_SESSION["userid"] !== $account["userid"]) ? 'text-yellow-600' : '' ?>"></i>
+                <i class="fas fa-home text-xl <?= ($_SESSION["userid"] !== $account["userid"]) ? 'text-yellow-600' : 'dark:text-white' ?>"></i>
             </a>
             <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
                 <img src="../view/img/naotoge5.png" alt="" class="inline-block w-8 rounded-full <?= ($_SESSION["userid"] === $account["userid"]) ? 'border border-yellow-600' : '' ?>">
             </a>
             <a href="/?new" class="flex-grow flex items-center justify-center">
-                <i class="far fa-edit text-xl"></i>
+                <i class="far fa-edit text-xl dark:text-white"></i>
             </a>
         </div>
     </div>

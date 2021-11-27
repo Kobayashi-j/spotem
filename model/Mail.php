@@ -29,9 +29,9 @@ class Mail
 
     public static function send($email, $params)
     {
-
         $dotenv = Dotenv::createImmutable(dirname(__DIR__, 1));
         $dotenv->load();
+
         $res = false;
         try {
             $mailer = new PHPMailer(true);
