@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+// ルーティング
 $route = (!empty($_GET)) ? array_key_first($_GET) : 'top';
 $redirect = false;
 
@@ -60,15 +61,29 @@ switch ($route) {
         }
         break;
     case 'apply':
-        $view = "view/apply.php";
+        $step = (!empty($_GET["apply"])) ? $_GET["apply"] : '1';
+        switch ($step) {
+            case '1':
+                $view = "view/apply.php";
+                break;
+            case '2':
+                // 修正必須
+                $view = "view/apply2.php";
+                break;
+            default:
+                $redirect = "?apply";
+                break;
+        }
         break;
     case 'top':
         $view = "view/top.php";
         break;
     default:
-        $view = "view/show.php";
+        $view = ($route === $_SESSION["userid"]) ? "view/admin.php" : "view/guest.php";
         break;
 }
+
+// リダイレクトが必要な場合
 if ($redirect) {
     header("Location: /" . $redirect);
 } else {

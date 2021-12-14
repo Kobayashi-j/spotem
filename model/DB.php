@@ -5,24 +5,8 @@ namespace app\model;
 /**
  * データベース接続クラス - 非同期通信
  */
-class DB implements Async
+class DB
 {
-    public static function call($method, $data)
-    {
-        $res = false;
-        switch ($method) {
-            case 'set':
-                $res = self::set($data["query"], $data["params"]);
-                break;
-            case 'get':
-                $res = self::get($data["query"], $data["params"]);
-                break;
-            default:
-                # code...
-                break;
-        }
-        return $res;
-    }
     /**
      * Undocumented function
      *
@@ -32,21 +16,22 @@ class DB implements Async
      */
     public static function set($query, $params)
     {
-        $res = false;
-        try {
-            $db = new \SQLite3(__DIR__ . "/../db/spotem.db");
-            $db->enableExceptions(true);
-            $db->exec("PRAGMA foreign_keys=true");
-            $stmt = $db->prepare($query);
-            $stmt = self::setParams($stmt, $params);
-            $stmt->execute();
-            $res = true;
-        } catch (\Exception $e) {
-            //$flag = Config::errorType($e);
-        } finally {
-            $db->close();
-        }
-        return $res;
+        $url = "https://naotoge5-works.tk/spotem/set/";
+
+        $data = array(
+            "query" => $query,
+            "params" => $params
+        );
+
+        $context = array(
+            'http' => array(
+                'method'  => 'POST',
+                'header'  => implode("\r\n", array('Content-Type: application/x-www-form-urlencoded',)),
+                'content' => http_build_query($data)
+            )
+        );
+        $res = file_get_contents($url, false, stream_context_create($context));
+        return json_decode($res,true);
     }
 
     /**
@@ -58,56 +43,21 @@ class DB implements Async
      */
     public static function get($query, $params)
     {
-        $res = [];
-        try {
-            $db = new \SQLite3(__DIR__ . '/../db/spotem.db');
-            $db->enableExceptions(true);
-            $db->exec("PRAGMA foreign_keys=true");
-            $stmt = $db->prepare($query);
-            $stmt = self::setParams($stmt, $params);
-            $result = $stmt->execute();
-            while ($tmp = $result->fetchArray(SQLITE3_ASSOC)) {
-                $res[] = $tmp;
-            }
-        } catch (\Exception $e) {
-            //$flag = Config::errorType($e);
-            $res = false;
-        } finally {
-            $db->close();
-        }
-        return $res;
-    }
+        $url = "https://naotoge5-works.tk/spotem/get/";
 
-    /**
-     * パラメータをSQLite3Stmtに設定
-     *
-     * @param \SQLite3Stmt $stmt
-     * @param array $params
-     * @return \SQLite3Stmt
-     */
-    protected static function setParams(\SQLite3Stmt $stmt, $params)
-    {
-        $keys = array_keys($params);
-        foreach ($keys as $key) {
-            $stmt->bindParam($key, $params[$key]);
-        }
-        return $stmt;
-    }
+        $data = array(
+            "query" => $query,
+            "params" => $params
+        );
 
-    /**
-     * パラメータをSQLite3Stmtに設定()
-     *
-     * @deprecated foreachの挙動が変（valueがすべて上書きされる？？）
-     * 
-     * @param \SQLite3Stmt $stmt
-     * @param array $params
-     * @return \SQLite3Stmt
-     */
-    protected static function setParams_d(\SQLite3Stmt $stmt, $params)
-    {
-        foreach ($params as $key => $value) {
-            $stmt->bindParam($key, $value);
-        }
-        return $stmt;
+        $context = array(
+            'http' => array(
+                'method'  => 'POST',
+                'header'  => implode("\r\n", array('Content-Type: application/x-www-form-urlencoded',)),
+                'content' => http_build_query($data)
+            )
+        );
+        $res = file_get_contents($url, false, stream_context_create($context));
+        return json_decode($res,true);
     }
 }

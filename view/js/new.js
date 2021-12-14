@@ -13,6 +13,7 @@ $(function () {
             if (status === 'ZERO_RESULTS') return;
             $(".j-autocomplete").empty();
             $(".j-autocomplete").removeClass("hidden");
+            console.log(results);
             results.forEach(data => {
                 $(".j-autocomplete").append('<li class="pl-2 py-2 hover:bg-gray-50 text-xs" data-id="' + data.place_id + '" data-place="' + data.structured_formatting.main_text + '">' + data.structured_formatting.main_text + " - " + data.structured_formatting.secondary_text + '</li>');
             });

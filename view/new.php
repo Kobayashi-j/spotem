@@ -17,14 +17,12 @@
 </head>
 
 <body>
-    <div class="fixed bg-white top-0 w-full lg:px-64">
-        <div class="border-b border-gray-400 text-center py-3 font-bold">
-            新規投稿
+    <div class="sticky top-0 bg-white w-full shadow-md">
+        <div class="flex">
+            <div class="flex-grow-0 px-4 py-3 cursor-pointer"><i class="fas fa-chevron-left"></i></div>
+            <div class="flex-grow text-center font-bold py-3">新規投稿</div>
+            <div class="flex-grow-0 px-4 py-3 cursor-pointer"><i class="fas fa-ellipsis-h"></i></div>
         </div>
-        <!--php:$_SERVER['HTTP_REFERER']実装-->
-        <a href="/?home" class="absolute top-0 p-3">
-            <i class="fas fa-chevron-left"></i>
-        </a>
     </div>
     <!--
     <div class="p-3">
@@ -52,16 +50,19 @@
 
     </div>
     <!-- Tabs -->
-    <div class="fixed w-full bottom-0 lg:px-64">
-        <div id="" class="flex w-full bg-white border-t border-gray-400">
-            <a href="/?home" class="flex-grow flex items-center justify-center">
-                <i class="fas fa-home text-xl"></i>
+    <div class="fixed w-full bg-white bottom-0 border-t-2">
+        <div class="flex w-full">
+            <a href="/?home" class="flex-1 text-center py-2">
+                <i class="fas fa-home text-gray-600 text-xl"></i>
             </a>
-            <a href="/?<?= $_SESSION["userid"] ?>" class="flex-grow flex items-center justify-center py-3">
-                <img src="../view/img/user.png" alt="" class="inline-block w-8 rounded-full border border-black">
+            <a href="/?<?= $_SESSION["userid"] ?>" class="flex-1 text-center py-2">
+                <i class="fas fa-user text-gray-600 text-xl"></i>
             </a>
-            <a href="/?new" class="flex-grow flex items-center justify-center">
-                <i class="far fa-edit text-xl text-yellow-600"></i>
+            <a href="" class="flex-1 text-center py-2">
+                <i class="fas fa-bookmark text-gray-600 text-lg"></i>
+            </a>
+            <a href="/?new" class="flex-1 text-center py-2">
+                <i class="fas fa-edit text-green-400 text-xl"></i>
             </a>
         </div>
     </div>

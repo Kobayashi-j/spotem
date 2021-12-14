@@ -3,24 +3,6 @@
  */
 export class User {
     /**
-     * 
-     * @param {string} userid
-     * @param {string} email
-     * @param {string} password
-     * @param {string} comment
-     * @param {string} image
-     * @param {string} is_official
-     */
-    constructor(userid, name, email, password, comment = null, image = null, is_official = null) { /* コンストラクタ */
-        this.userid = userid;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.comment = comment;
-        this.image = image;
-        this.is_official = is_official;
-    }
-    /**
      * ユーザーが存在するかどうか
      * @param {string} unique ユーザー識別子（ユーザーID or メールアドレス）
      * @return deferredオブジェクトdata{bool}既存であればtrue
@@ -29,15 +11,15 @@ export class User {
         var deferred = new $.Deferred();
         $.ajax({
             type: "POST",
-            url: "../controller/async/?db=get",
+            url: "https://naotoge5-works.tk/spotem/get/",
             data: {
-                query: "SELECT COUNT(userid) FROM users WHERE userid = :key OR email = :key",
+                query: "SELECT COUNT(id) FROM users WHERE id = :key OR email = :key",
                 params: { key: unique }
             },
             dataType: "json"
         }).done(function (data) {
             var flag = false;
-            if (data[0]["COUNT(userid)"]) flag = true;
+            if (data[0]["COUNT(id)"]) flag = true;
             deferred.resolve(flag);
         }).fail(function () {
             deferred.resolve(-1);
@@ -53,40 +35,6 @@ export class User {
     static checkPassword(password) {
         if (password.length > 7 && password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) return true;
         return false;
-    }
-
-    /**
-     * ユーザー登録（インスタンス必須）
-     * @return {Object}
-     */
-    signup() {
-        var hash_password = '';
-        var deferred = Hash.get(this.password);
-        deferred.done(function (data) {
-            hash_password = data["to"];
-        });
-        var deferred = new $.Deferred();
-        $.ajax({
-            type: "POST",
-            url: "../controller/async/?db=set",
-            data: {
-                query: "INSERT INTO users VALUES(:userid, :name, :email, :password, :comment, :image, :is_official)",
-                params: {
-                    ":userid": this.userid,
-                    ":name": this.name,
-                    ":email": this.email,
-                    ":password": hash_password,
-                    ":comment": this.comment,
-                    ":image": this.image,
-                    ":is_official": this.is_official,
-                }
-            }
-        }).done(function (data) {
-            deferred.resolve(data);
-        }).fail(function () {
-            deferred.resolve(-1);
-        });
-        return deferred;
     }
 }
 

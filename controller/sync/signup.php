@@ -7,7 +7,7 @@ $name = $_POST["name"];
 $email = $_POST["email"];
 $hashed_password = app\model\Hash::get($_POST["password"]);
 
-$params = [":userid" => $userid, ":name" => $name, ":email" => $email, ":password" => $hashed_password];
+$params = [":id" => $userid, ":name" => $name, ":email" => $email, ":password" => $hashed_password];
 
 $res = app\model\DB::set("INSERT INTO users (userid, name, email, password) VALUES (:userid, :name, :email, :password)", $params);
 

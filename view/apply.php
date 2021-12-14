@@ -13,7 +13,7 @@
     <script async src="https://maps.googleapis.com/maps/api/js?key=<?= $_ENV['MAP_API_KEY'] ?>&libraries=places"></script>
     <script src="../view/js/apply.js" type="module" defer></script>
 
-    <title>新規登録 / Spotem</title>
+    <title>申請 / Spotem</title>
 </head>
 
 <body>
@@ -24,8 +24,8 @@
     <a href="/?home" class="absolute top-0 p-3">
         <i class="fas fa-chevron-left"></i>
     </a>
-    <div class="pt-20 px-8">
-        <form action="/" method="post">
+    <div class="pt-10 px-4">
+        <form action="/?apply=2" method="post">
             <p class="text-lg font-bold border-l-8 border-yellow-900 pl-2">営業許可証の登録</p>
             <hr class="border-yellow-900 my-2">
             <p class="p-2">
@@ -110,13 +110,16 @@
             <input type="text" name="city" class="w-4/5 ml-2 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["store_name"]) ? $_POST["store_name"] : '' ?>" required />
             <p class="m-2 font-bold">町名番地</p>
             <input type="text" name="town" class="w-4/5 ml-2 p-1 bg-gray-50 border border-gray-200 rounded-md outline-none" value="<?= isset($_POST["store_name"]) ? $_POST["store_name"] : '' ?>" required />
-
-            <p class="text-lg font-bold border-l-8 border-yellow-900 pl-2 mt-6">その他</p>
+            <p class="m-2 font-bold">店舗の種類</p>
+            <select name="prefecture" class="ml-2 border border-gray-200" required>
+                <option value="" selected="selected">選択してください</option>
+                <option value="レストラン">レストラン</option>
+                <option value="カフェ">カフェ</option>
+                <option value="コンビニ">コンビニ</option>
+            </select>
+            <p class="text-lg font-bold border-l-8 border-yellow-900 pl-2 mt-6">Google Mapとの連携</p>
             <input type="submit" class="w-full my-6 py-1 bg-yellow-300 rounded-md" value="確認" />
         </form>
-        <div class="text-xs text-gray-400 text-right mt-2">
-            企業の方は<a href="/" class="text-blue-900">こちら</a>
-        </div>
     </div>
     <footer>
         <div class="py-5 bg-gray-100 border-t border-gray-200 pr-6 text-right text-xs">
