@@ -1,4 +1,4 @@
-import { User } from './modules.js';
+import { SQL } from './modules.js';
 $(function () {
     if ($("input[name='userid']").val() !== '' && $("input[name='name']").val() !== '') {
         $(".j-userid-check, .j-name-check").removeClass("invisible");
@@ -31,10 +31,12 @@ $(function () {
                 if (userid.match(/[^A-Za-z0-9\-_]+/)) {
                     $(".j-userid-help").text('特殊文字不可');
                 } else {
-                    var deferred = User.find(userid);
+                    var params = { key: userid };
+                    var deferred = SQL.get("SELECT COUNT(id) FROM users WHERE id = :key OR email = :key", params);
+                    //var deferred = SQL.get("SELECT * FROM users");
                     //Deferredオブジェクトを監視し、完了の通知がきたらdone内を実行
                     deferred.done(function (data) {
-                        if (data) {
+                        if (data[0]["COUNT(id)"]) {
                             $(".j-userid-help").text('既に使用されています。');
                         } else {
                             $(".j-userid-check").removeClass("invisible");

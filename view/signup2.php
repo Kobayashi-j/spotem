@@ -15,16 +15,17 @@
 </head>
 
 <body>
-
-
-    <div class="border-b border-gray-200">
-        <!--php:$_SERVER['HTTP_REFERER']実装-->
+    <div class="sticky top-0 bg-white w-full shadow-md">
         <form action="/?signup" method="post">
             <input type="hidden" name="userid" value="<?= $_POST["userid"] ?>">
             <input type="hidden" name="name" value="<?= $_POST["name"] ?>">
-            <button type="submit" class="inline-block p-3">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+            <div class="flex">
+                <button type="submit" class="flex-grow-0 px-4 py-3">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="flex-grow text-center font-bold py-3">新規登録</div>
+                <div class="flex-grow-0 px-4 py-3"><i class="fas fa-chevron-right invisible"></i></div>
+            </div>
         </form>
     </div>
     <div class="pt-20 px-8">
@@ -62,7 +63,7 @@
                     <i class="fas fa-check text-gray-500"></i>
                 </span>
             </div>
-            <input type="button" class="w-full my-6 py-1 bg-yellow-400 rounded-md cursor-not-allowed j-submit" value="次へ" disabled onclick="submit();" />
+            <input type="button" class="w-full my-6 py-1 bg-green-400 rounded-md cursor-not-allowed j-submit" value="次へ" disabled onclick="submit();" />
         </form>
         <div class="text-xs text-gray-400 text-right mt-2">
             企業の方は<a href="/" class="text-blue-900">こちら</a>

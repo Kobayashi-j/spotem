@@ -1,4 +1,4 @@
-import { Mail, User } from './modules.js';
+import { Mail, SQL, checkPassword } from './modules.js';
 
 $(function () {
     if ($("input[name='email']").val() !== '' && $("input[name='password']").val() !== '' && $("input[name='password_check']").val() !== '') {
@@ -18,9 +18,10 @@ $(function () {
         //値が入力されていない場合
         if (email.length == 0) return;
         if (Mail.check(email)) {
-            var deferred = User.find(email);
+            var params = { key: email };
+            var deferred = SQL.get("SELECT COUNT(id) FROM users WHERE id = :key OR email = :key", params);
             deferred.done(function (data) {
-                if (data) {
+                if (data[0]["COUNT(id)"]) {
                     $(".j-email-help").text('既に使用されています。');
                 } else {
                     $(".j-email-check").removeClass("invisible");
@@ -45,7 +46,7 @@ $(function () {
         var password = $("input[name='password']").val();
         //値が入力されていない場合
         if (password.length != 0) {
-            if (User.checkPassword(password)) {
+            if (checkPassword(password)) {
                 $(".j-password-check").removeClass("invisible");
             } else {
                 $(".j-password-help").text("形式が正しくありません");

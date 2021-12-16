@@ -1,41 +1,47 @@
-/**
- * @constructor ユーザーオブジェクト
- */
-export class User {
-    /**
-     * ユーザーが存在するかどうか
-     * @param {string} unique ユーザー識別子（ユーザーID or メールアドレス）
-     * @return deferredオブジェクトdata{bool}既存であればtrue
-     */
-    static find(unique) {
+export class SQL {
+    static get(query, params = false) {
         var deferred = new $.Deferred();
+        var data = { query: query };
+        if (params) data.params = params;
         $.ajax({
             type: "POST",
-            url: "https://naotoge5-works.tk/spotem/get/",
-            data: {
-                query: "SELECT COUNT(id) FROM users WHERE id = :key OR email = :key",
-                params: { key: unique }
-            },
+            url: "https://naotoge5-works.tk/spotem/?get",
+            data: data,
             dataType: "json"
         }).done(function (data) {
-            var flag = false;
-            if (data[0]["COUNT(id)"]) flag = true;
-            deferred.resolve(flag);
+            deferred.resolve(data);
         }).fail(function () {
             deferred.resolve(-1);
         });
         return deferred;
     }
 
-    /**
-     * パスワードの条件（文字数8文字以上かつ半角英数含む）を満たしているかどうか
-     * @param {string} password パスワード
-     * @return {Boolean}
-     */
-    static checkPassword(password) {
-        if (password.length > 7 && password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) return true;
-        return false;
+    static set(query, params = false) {
+        var deferred = new $.Deferred();
+        var data = { query: query };
+        if (params) data.params = params;
+        $.ajax({
+            type: "POST",
+            url: "https://naotoge5-works.tk/spotem/?set",
+            data: data,
+            dataType: "json"
+        }).done(function (data) {
+            deferred.resolve(data);
+        }).fail(function () {
+            deferred.resolve(-1);
+        });
+        return deferred;
     }
+}
+
+/**
+ * パスワードの条件（文字数8文字以上かつ半角英数含む）を満たしているかどうか
+ * @param {string} password パスワード
+ * @return {Boolean}
+ */
+export function checkPassword(password) {
+    if (password.length > 7 && password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) return true;
+    return false;
 }
 
 export const Hash = {
@@ -44,7 +50,7 @@ export const Hash = {
 
         $.ajax({
             type: "POST",
-            url: "../controller/async/?hash=get",
+            url: "../controller/async/?getHash",
             data: {
                 value: value
             },
@@ -62,7 +68,7 @@ export const Hash = {
 
         $.ajax({
             type: "POST",
-            url: "../controller/async/?hash=get",
+            url: "../controller/async/?checkHash",
             data: {
                 value: value,
                 hashed_value: hashed_value
@@ -84,7 +90,7 @@ export class Alert {
 
         $.ajax({
             type: "POST",
-            url: "../controller/async/?alert=get",
+            url: "../controller/async/?getAlert",
             dataType: "json"
         }).done(function (data) {
             deferred.resolve(data);
@@ -101,27 +107,26 @@ export class Post {
 }
 
 export class Mail {
-
+    /**
+     * @param {string} address アドレス
+     * @param {string} title 件名
+     * @param {string} body 本文
+     * @return {boolean}
+     */
     static send(address, title, body) {
-        /* 
-        */
-
         var deferred = new $.Deferred();
-
         $.ajax({
             type: "POST",
-            url: "../controller/async/?mail=send",
+            url: "../controller/async/?sendMail",
             data: {
-                email: address,
-                params: {
-                    title: title,
-                    body: body
-                }
+                address: address,
+                title: title,
+                body: body
             },
             dataType: "json"
         }).done(function (data) {
             deferred.resolve(data);
-        }).fail(function () {
+        }).fail(function (data) {
             deferred.resolve(-1);
         });
 
@@ -129,7 +134,7 @@ export class Mail {
     }
 
     /**
-     * @param {string} email - email address
+     * @param {string} email email address
      * @return {boolean} true:使用可能, false:使用不可
      */
     static check(email) {

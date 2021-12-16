@@ -15,11 +15,12 @@
 </head>
 
 <body>
-    <div class="border-b border-gray-200">
-        <!--php:$_SERVER['HTTP_REFERER']実装-->
-        <a href="/" class="inline-block p-3">
-            <i class="fas fa-chevron-left"></i>
-        </a>
+    <div class="sticky top-0 bg-white w-full shadow-md">
+        <div class="flex">
+            <a href="/?top" class="flex-grow-0 px-4 py-3"><i class="fas fa-chevron-left"></i></a>
+            <div class="flex-grow text-center font-bold py-3">新規登録</div>
+            <div class="flex-grow-0 px-4 py-3"><i class="fas fa-chevron-right invisible"></i></div>
+        </div>
     </div>
     <div class="pt-20 px-8">
         <p class="text-3xl text-center pb-10 font-serif"><a href="/">Spotem</a></p>
@@ -43,7 +44,7 @@
                     <i class="fas fa-check text-gray-500"></i>
                 </span>
             </div>
-            <input type="button" class="w-full my-6 py-1 bg-yellow-400 rounded-md cursor-not-allowed j-submit" value="次へ" disabled onclick="submit();" />
+            <input type="button" class="w-full my-6 py-1 bg-green-400 rounded-md cursor-not-allowed j-submit" value="次へ" disabled onclick="submit();" />
         </form>
         <div class="text-xs text-gray-400 text-right mt-2">
             企業の方は<a href="/" class="text-blue-900">こちら</a>

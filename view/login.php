@@ -15,11 +15,12 @@
 </head>
 
 <body>
-    <div class="border-b border-gray-200">
-        <!--php:$_SERVER['HTTP_REFERER']実装-->
-        <a href="/" class="inline-block p-3">
-            <i class="fas fa-chevron-left"></i>
-        </a>
+    <div class="sticky top-0 bg-white w-full shadow-md">
+        <div class="flex">
+            <a href="/?top" class="flex-grow-0 px-4 py-3"><i class="fas fa-chevron-left"></i></a>
+            <div class="flex-grow text-center font-bold py-3"></div>
+            <div class="flex-grow-0 px-4 py-3 cursor-pointer"></div>
+        </div>
     </div>
     <div class="pt-20 px-8">
         <p class="text-3xl text-center pb-10 font-serif"><a href="/">Spotem</a></p>
@@ -28,18 +29,18 @@
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-at text-gray-500"></i>
                 </span>
-                <input type="text" name="unique" placeholder="ユーザーIDまたはメール" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" value="<?= $_GET["login"] ?>" required />
+                <input type="text" name="unique" placeholder="ユーザーIDまたはメール" class="w-full py-2 pr-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" value="<?= $_GET["login"] ?>" required />
             </div>
             <div class="flex flex-grow bg-gray-50 border border-gray-200 rounded-md">
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-lock text-gray-500"></i>
                 </span>
-                <input type="password" name="password" placeholder="パスワード（8文字以上の半角英数）" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" required />
+                <input type="password" name="password" placeholder="パスワード（8文字以上の半角英数）" class="w-full py-2 pr-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" required />
             </div>
             <div class="text-right mt-3">
                 <a href="" class="text-blue-900 text-sm">パスワードを忘れた場合</a>
             </div>
-            <button type="submit" class="font-normal w-full my-6 py-1 bg-yellow-400 rounded-md">ログイン</button>
+            <button type="submit" class="font-normal w-full my-6 py-1 bg-green-400 rounded-md">ログイン</button>
         </form>
         <div class="text-xs text-gray-400 text-right">
             アカウントをお持ちでないですか？<a href="/?signup" class="text-blue-900">登録する</a>

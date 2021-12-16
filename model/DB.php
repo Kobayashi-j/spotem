@@ -16,7 +16,7 @@ class DB
      */
     public static function set($query, $params)
     {
-        $url = "https://naotoge5-works.tk/spotem/set/";
+        $url = "https://naotoge5-works.tk/spotem/?set/";
 
         $data = array(
             "query" => $query,
@@ -43,7 +43,7 @@ class DB
      */
     public static function get($query, $params)
     {
-        $url = "https://naotoge5-works.tk/spotem/get/";
+        $url = "https://naotoge5-works.tk/spotem/?get";
 
         $data = array(
             "query" => $query,

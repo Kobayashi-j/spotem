@@ -15,8 +15,8 @@
 <body>
     <div class="pt-32 px-8">
         <p class="text-3xl text-center pb-10 font-serif"><a href="/">Spotem</a></p>
-        <a href="/?login" class="block w-full text-center my-6 py-1 bg-yellow-400 rounded-md">ログイン</a>
-        <a href="/?signup" class="block w-full text-center font-serif my-6 py-1 bg-yellow-400 rounded-md">Spotemを始める</a>
+        <a href="/?login" class="block w-full text-center my-6 py-1 bg-green-400 rounded-md">ログイン</a>
+        <a href="/?signup" class="block w-full text-center font-serif my-6 py-1 bg-green-400 rounded-md">Spotemを始める</a>
         <div class="text-xs text-gray-400 text-right">
             <a href="/?info" class="text-blue-900">企業の方へ</a>
         </div>

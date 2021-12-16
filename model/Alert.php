@@ -2,29 +2,12 @@
 
 namespace app\model;
 
-class Alert implements Async
-{
-    /**
-     * 
-     * @return void
-     */
-    public static function call($method, $data = null)
-    {
-        $res = false;
-        switch ($method) {
-            case 'set':
-                $res = self::set($data["message"], $data["type"]);
-                break;
-            case 'get':
-                $res = self::get();
-                break;
-            default:
-                # code...
-                break;
-        }
-        return $res;
-    }
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
+class Alert
+{
     /**
      * アラートの設定
      *
