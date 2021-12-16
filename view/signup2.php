@@ -28,7 +28,7 @@
             </div>
         </form>
     </div>
-    <div class="pt-20 px-8">
+    <div class="pt-20 px-4">
         <p class="text-3xl text-center pb-10 font-serif"><a href="/">Spotem</a></p>
         <form action="/?signup=3" method="post">
             <input type="hidden" name="userid" value="<?= $_POST["userid"] ?>">

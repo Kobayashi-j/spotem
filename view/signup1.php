@@ -22,7 +22,7 @@
             <div class="flex-grow-0 px-4 py-3"><i class="fas fa-chevron-right invisible"></i></div>
         </div>
     </div>
-    <div class="pt-20 px-8">
+    <div class="pt-20 px-4">
         <p class="text-3xl text-center pb-10 font-serif"><a href="/">Spotem</a></p>
         <form action="/?signup=2" method="post">
             <p class="text-xs text-red-500 j-userid-help ml-2 mb-1"></p>

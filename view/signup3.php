@@ -30,7 +30,7 @@
             </div>
         </form>
     </div>
-    <div class="pt-20 px-8">
+    <div class="pt-20 px-4">
         <p class="text-3xl text-center pb-10 font-serif"><a href="/">Spotem</a></p>
         <p class="text-xs text-center my-2 text-blue-500 j-message">メールアドレスに認証コードを送信しました<br>コードを入力してください</p>
         <form action="/controller/sync/signup.php" method="post" name="final_submit">

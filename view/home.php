@@ -20,7 +20,7 @@
     <!-- メニューアイコン&検索窓&タブ -->
     <div class="sticky top-0 bg-white w-full shadow-md">
         <div class="flex">
-            <div class="flex-grow-0 px-4 py-3 cursor-pointer"><i class="fas fa-sliders-h"></i></div>
+            <div class="flex-grow-0 px-4 py-3 cursor-pointer j-hamburger"><i class="fas fa-sliders-h"></i></div>
             <div class="flex-grow text-center font-bold pr-2  py-2">
                 <div class="flex flex-grow h-full bg-gray-100 rounded-full">
                     <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
@@ -29,6 +29,11 @@
                     <input type="text" placeholder="検索" class="w-full rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" />
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="w-full h-screen z-30 top-0 fixed bg-opacity-80 bg-white overflow-hidden hidden j-menu-bg">
+        <div class="h-screen bg-white border-r-2 transition duration-1000 overflow-hidden j-menu" style="width: 0;">
+            <a href="/controller/sync/logout.php">ログアウト</a>
         </div>
     </div>
     <!-- 投稿一覧 -->
@@ -44,7 +49,7 @@
                     <p class="text-sm">st071959</p>
                     <p class="text-gray-400 text-xs">@st071959</p>
                 </div>
-                <div class="flex-grow-0 px-4 py-2"><i class="fas fa-ellipsis-v"></i></div>
+                <div class="flex-grow-0 px-4 py-2 cursor-pointer"><i class="fas fa-ellipsis-v"></i></div>
             </div>
             <div class="text-sm p-1">また行きたいなああああああああああああああああああああああああああああああああああああああああ</div>
             <!-- imageの無いものには生成しない -->

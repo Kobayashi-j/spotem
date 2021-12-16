@@ -22,7 +22,7 @@
             <div class="flex-grow-0 px-4 py-3 cursor-pointer"></div>
         </div>
     </div>
-    <div class="pt-20 px-8">
+    <div class="pt-20 px-4">
         <p class="text-3xl text-center pb-10 font-serif"><a href="/">Spotem</a></p>
         <form action="/controller/sync/login.php" method="post">
             <div class="flex flex-grow bg-gray-50 border border-gray-200 rounded-md mb-2">
