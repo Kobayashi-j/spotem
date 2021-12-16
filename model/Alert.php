@@ -1,44 +1,35 @@
 <?php
+
 namespace app\model;
 
-class Alert implements Async
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+class Alert
 {
-    /**
-     * 
-     * @return void
-     */
-    public static function call($method, $data)
-    {
-        switch ($method) {
-            case 'set':
-                self::set($data["message"], $data["type"]);
-                break;
-
-            default:
-                # code...
-                break;
-        }
-    }
-
     /**
      * アラートの設定
      *
      * @param string $message
      * @param string $type
-     * @return void
+     * @return bool
      */
     public static function set($message, $type)
     {
-        switch ($type) {
-            case 'success':
-            case 'warning':
-            case 'danger':
-                $_SESSION["alert"] = ["message" => $message, "class" => 'has-background-' . $type . '-light'];
-                break;
-            case 'info':
-            default:
-                $_SESSION["alert"] = ["message" => $message, "class" => 'has-background-info-light'];
-                break;
-        }
+        $_SESSION["alert"] = ["message" => $message, "type" => $type];
+        return true;
+    }
+
+    /**
+     * アラートの取得
+     *
+     * @return array
+     */
+    public static function get()
+    {
+        $alert = (isset($_SESSION["alert"])) ? $_SESSION["alert"] : false;
+        unset($_SESSION["alert"]);
+        return $alert;
     }
 }

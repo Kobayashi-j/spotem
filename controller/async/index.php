@@ -1,35 +1,54 @@
 <?php
 require_once "../../vendor/autoload.php";
 
-$request_uri = $_SERVER['REQUEST_URI'];
-// $method = $_SERVER['REQUEST_METHOD'];
-/*
-$request_uri = str_replace('/controller/async/', '', $request_uri);
-$tmp = explode('/', $request_uri);
-$class = $tmp[0];
-$method = $tmp[1];
-$data = $_POST;
-*/
-
-$class = array_key_first($_GET);
-$method = $_GET[$class];
-$data = $_POST;
-$res = false;
-
-switch ($class) {
-    case 'db':
-        $res = app\model\DB::call($method, $data);
-        break;
-    case 'mail':
-        $res = app\model\Mail::call($method, $data);
-        break;
-    case 'hash':
-        $res = app\model\Hash::call($method, $data);
-        break;
-    default:
-        $res = ["message" => 'パラメータが違います'];
+/**
+ * メール送信
+ *
+ * @param array $params [address, title, body]
+ * @return bool
+ */
+function sendMail($params)
+{
+    return app\model\Mail::send($params["address"], $params["title"], $params["body"]);
 }
 
+/**
+ * 通知の取得
+ *
+ * @param array $params [address, title, body]
+ * @return bool
+ */
+function getAlert($params = null)
+{
+    return app\model\Alert::get();
+}
+
+/**
+ * ハッシュ化した値の取得
+ *
+ * @param array $params [value]
+ * @return string
+ */
+function getHash($params)
+{
+
+    return password_hash($params["value"], PASSWORD_DEFAULT);
+}
+
+/**
+ * 値とハッシュ化された値が一致するか
+ *
+ * @param array $params [value, hashed_value]
+ * @return bool
+ */
+function checkHash($params)
+{
+    return password_verify($params["value"], $params["hashed_value"]);
+}
+
+// 処理
+$method = array_key_first($_GET);
+$res = $method($_POST);
 
 /*
 $requests = ['TABLE' => $array[0], 'ID' => $array[1], 'METHOD' => $_SERVER['REQUEST_METHOD']];
@@ -37,6 +56,6 @@ $array = ['URI' => $request_uri, 'METHOD' => $_SERVER['REQUEST_METHOD']];
 */
 
 // Origin null is not allowed by Access-Control-Allow-Origin.とかのエラー回避の為、ヘッダー付与
-header("Access-Control-Allow-Origin: https://spotem.ml");
+header("Access-Control-Allow-Origin: *");
 
 echo json_encode($res);

@@ -1,25 +1,9 @@
 <?php
+
 namespace app\model;
 
-class Hash implements Async
+class Hash
 {
-
-    /**
-     * @return string|bool get:ハッシュ化された値, check:値がハッシュ化済みの値と同じかどうか
-     */
-    public static function call($method, $data)
-    {
-        $res = false;
-        switch ($method) {
-            case 'get':
-                $res = self::get($data["value"]);
-                break;
-            case 'check':
-                $res = self::check($data["value"], $data["hashed_value"]);
-                break;
-        }
-        return $res;
-    }
 
     public static function get($value)
     {

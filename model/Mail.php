@@ -13,25 +13,11 @@ use Dotenv\Dotenv;
 
 class Mail
 {
-    public static function call($method, $data)
+    public static function send($address, $title, $body)
     {
-        $res = false;
-        switch ($method) {
-            case 'send':
-                $res = self::send($data["email"], $data["params"]);
-                break;
-            default:
-                # code...
-                break;
-        }
-        return $res;
-    }
-
-    public static function send($email, $params)
-    {
-
         $dotenv = Dotenv::createImmutable(dirname(__DIR__, 1));
         $dotenv->load();
+
         $res = false;
         try {
             $mailer = new PHPMailer(true);
@@ -45,10 +31,10 @@ class Mail
             $mailer->SMTPSecure = 'ssl';
             $mailer->Port = 465;
             $mailer->setFrom($mailuser, 'Spotem'); //送信者
-            $mailer->addAddress($email); //宛先
+            $mailer->addAddress($address); //宛先
 
-            $mailer->Subject = $params["title"];
-            $mailer->Body = $params["body"];
+            $mailer->Subject = $title;
+            $mailer->Body = $body;
 
             $mailer->send();
             $res = true;
