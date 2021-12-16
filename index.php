@@ -10,11 +10,11 @@ switch ($route) {
     case 'search':
     case 'info':
     case 'settings':
-        if (isset($_SESSION["userid"])) {
-            $view = "view/" . $route . ".php";
+        if (!isset($_SESSION["userid"])) {
+            $redirect = "?login";
             break;
         }
-        $redirect = "?login";
+        $view = "view/" . $route . ".php";
         break;
     case 'login':
         if (!isset($_SESSION["userid"])) {
@@ -45,6 +45,10 @@ switch ($route) {
         }
         break;
     case 'new':
+        if (!isset($_SESSION["userid"])) {
+            $redirect = "?login";
+            break;
+        }
         $step = (!empty($_GET["new"])) ? $_GET["new"] : '1';
         switch ($step) {
             case '1':
@@ -61,6 +65,10 @@ switch ($route) {
         }
         break;
     case 'apply':
+        if (!isset($_SESSION["userid"])) {
+            $redirect = "?login";
+            break;
+        }
         $step = (!empty($_GET["apply"])) ? $_GET["apply"] : '1';
         switch ($step) {
             case '1':
