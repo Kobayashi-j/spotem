@@ -10,11 +10,5 @@ deferred.done(function (data) {
 });
 
 $(function () {
-    $(".j-hamburger").on("click", function () {
-        $(".j-menu-bg").removeClass("hidden");
-        $(".j-menu").animate({
-            "width": "40%"
-        }, 200, "linear");
-    });
     
 });

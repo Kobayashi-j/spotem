@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../view/css/tailwind.css">
     <script src="../view/js/jquery.js"></script>
     <script src="../view/js/show.js" type="module" defer></script>
-    <script src="../view/js/tab.js" type="module" defer></script>
+    <script src="../view/js/tab.js" defer></script>
+    <script src="view/js/side.js" defer></script>
 
     <title>Spotem / @<?= $route ?>管理者</title>
 </head>
@@ -18,9 +19,30 @@
     <?php include "controller/include/show.php" ?>
     <div class="sticky top-0 bg-white w-full shadow-md">
         <div class="flex">
-            <div class="flex-grow-0 px-4 py-3 cursor-pointer"><i class="fas fa-sliders-h"></i></div>
+            <div class="flex-grow-0 px-4 py-3 cursor-pointer j-hamburger"><i class="fas fa-sliders-h"></i></div>
             <div class="flex-grow text-center font-bold py-3"><a href="" class="cursor-pointer"><?= $route ?></a></div>
             <div class="flex-grow-0 px-4 py-3 cursor-pointer"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    </div><!-- サイドメニュー -->
+    <div class="w-full h-screen z-30 top-0 fixed bg-opacity-80 bg-white overflow-hidden hidden j-side-transparent">
+    </div>
+    <div class="fixed top-0 z-50 h-screen bg-white border-r-2 transition duration-1000 overflow-hidden j-side-bg" style="width: 0;">
+        <div class="j-side-menu hidden">
+            <div class="text-right">
+                <button class="px-5 py-2 j-side-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="border-b">&nbsp;<br>&nbsp;<br>&nbsp;<br></div>
+            <ul>
+                <a href="/?settings=profile">
+                    <li class="pl-5 py-3"><i class="fas fa-user-edit mr-2"></i>編集</li>
+                </a>
+                <a href="">
+                    <li class="pl-5 py-3"><i class="fas fa-bookmark mr-2"></i>ブックマーク</li>
+                </a>
+                <a href="/controller/sync/logout.php">
+                    <li class="pl-5 py-3"><i class="fas fa-sign-out-alt mr-2"></i>ログアウト</li>
+                </a>
+            </ul>
         </div>
     </div>
     <div>
@@ -32,13 +54,13 @@
         <table class="w-full table-fixed my-3">
             <tr>
                 <th>213</th>
-                <th>10K</th>
-                <th>325</th>
+                <th><?= $account["follower"] ?></th>
+                <th><?= $account["following"] ?></th>
             </tr>
             <tr class="text-center text-xs text-gray-600">
                 <td>件</td>
                 <td>フォロワー</td>
-                <td>フォロー</td>
+                <td>フォロー中</td>
             </tr>
         </table>
     </div>

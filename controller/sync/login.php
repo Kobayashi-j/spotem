@@ -9,6 +9,7 @@ $hashed_password = app\model\Hash::get($_POST["password"]);
 $res = app\model\DB::get("SELECT id, password FROM users WHERE id = :key OR email = :key", [":key" => $unique]);
 $location = "?login";
 if (!empty($res) && app\model\Hash::check($password, $res[0]["password"])) {
+    app\model\DB::set("UPDATE users SET logined_at = DATE ('now', 'localtime') WHERE id = :key OR email = :key", [":key" => $unique]);
     $_SESSION["userid"] = $res[0]["id"];
     app\model\Alert::set('ログインしました', 'success');
     $location = "?home";

@@ -38,7 +38,7 @@
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-envelope text-gray-500"></i>
                 </span>
-                <input type="email" name="email" placeholder="メールアドレス" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" value="<?= isset($_POST["email"]) ? $_POST["email"] : '' ?>" required />
+                <input type="email" name="email" placeholder="メールアドレス" class="w-full py-2 bg-transparent outline-none" value="<?= isset($_POST["email"]) ? $_POST["email"] : '' ?>" required />
                 <span class="px-3 flex items-center invisible j-email-check">
                     <i class="fas fa-check text-gray-500"></i>
                 </span>
@@ -48,7 +48,7 @@
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-lock text-gray-500"></i>
                 </span>
-                <input type="password" name="password" placeholder="パスワード" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" value="<?= isset($_POST["password"]) ? $_POST["password"] : '' ?>" required />
+                <input type="password" name="password" placeholder="パスワード" class="w-full py-2 bg-transparent outline-none" value="<?= isset($_POST["password"]) ? $_POST["password"] : '' ?>" required />
                 <span class="px-3 flex items-center invisible j-password-check">
                     <i class="fas fa-check text-gray-500"></i>
                 </span>
@@ -58,7 +58,7 @@
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-lock text-gray-500"></i>
                 </span>
-                <input type="password" name="password_check" placeholder="確認" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" value="<?= isset($_POST["password"]) ? $_POST["password"] : '' ?>" required />
+                <input type="password" name="password_check" placeholder="確認" class="w-full py-2 bg-transparent outline-none" value="<?= isset($_POST["password"]) ? $_POST["password"] : '' ?>" required />
                 <span class="px-3 flex items-center invisible j-password_check-check">
                     <i class="fas fa-check text-gray-500"></i>
                 </span>

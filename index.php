@@ -9,12 +9,29 @@ switch ($route) {
     case 'home':
     case 'search':
     case 'info':
-    case 'settings':
         if (!isset($_SESSION["userid"])) {
             $redirect = "?login";
             break;
         }
         $view = "view/" . $route . ".php";
+        break;
+    case 'settings':
+        if (!isset($_SESSION["userid"])) {
+            $redirect = "?login";
+            break;
+        }
+        $step = (!empty($_GET["settings"])) ? $_GET["settings"] : 'config';
+        switch ($step) {
+            case 'config':
+                $view = "view/settings.php";
+                break;
+            case 'profile':
+                $view = "view/profile.php";
+                break;
+            default:
+                $redirect = "?home";
+                break;
+        }
         break;
     case 'login':
         if (!isset($_SESSION["userid"])) {
@@ -87,7 +104,7 @@ switch ($route) {
         $view = "view/top.php";
         break;
     default:
-        $view = ($route === $_SESSION["userid"]) ? "view/admin.php" : "view/guest.php";
+        $view = (isset($_SESSION["userid"]) && $route === $_SESSION["userid"]) ? "view/admin.php" : "view/guest.php";
         break;
 }
 

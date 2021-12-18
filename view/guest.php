@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../view/css/tailwind.css">
     <script src="../view/js/jquery.js"></script>
     <script src="../view/js/show.js" type="module" defer></script>
-    <script src="../view/js/tab.js" type="module" defer></script>
+    <script src="../view/js/tab.js" defer></script>
+    <script src="view/js/side.js" defer></script>
 
     <title>Spotem / @<?= $route ?></title>
 </head>
@@ -18,9 +19,27 @@
     <?php include "controller/include/show.php" ?>
     <div class="sticky top-0 bg-white w-full shadow-md">
         <div class="flex">
-            <div class="flex-grow-0 px-4 py-3 cursor-pointer"><i class="fas fa-sliders-h"></i></div>
+            <div class="flex-grow-0 px-4 py-3 cursor-pointer j-hamburger"><i class="fas fa-sliders-h"></i></div>
             <div class="flex-grow text-center font-bold py-3"><a href="" class="cursor-pointer"><?= $route ?></a></div>
             <div class="flex-grow-0 px-4 py-3 cursor-pointer"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    </div><!-- サイドメニュー -->
+    <div class="w-full h-screen z-30 top-0 fixed bg-opacity-80 bg-white overflow-hidden hidden j-side-transparent">
+    </div>
+    <div class="fixed top-0 z-50 h-screen bg-white border-r-2 transition duration-1000 overflow-hidden j-side-bg" style="width: 0;">
+        <div class="j-side-menu hidden">
+            <div class="text-right">
+                <button class="px-5 py-2 j-side-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="border-b">&nbsp;<br>&nbsp;<br>&nbsp;<br></div>
+            <ul>
+                <a href="">
+                    <li class="pl-5 py-3"><i class="fas fa-bookmark mr-2"></i>ブックマーク</li>
+                </a>
+                <a href="/controller/sync/logout.php">
+                    <li class="pl-5 py-3"><i class="fas fa-sign-out-alt mr-2"></i>ログアウト</li>
+                </a>
+            </ul>
         </div>
     </div>
     <div>
@@ -33,8 +52,8 @@
             <table class="w-full table-fixed my-3">
                 <tr>
                     <th>213</th>
-                    <th>10K</th>
-                    <th>325</th>
+                    <th><?= $account["follower"] ?></th>
+                    <th><?= $account["following"] ?></th>
                 </tr>
                 <tr class="text-center text-xs text-gray-600">
                     <td>件</td>
@@ -49,12 +68,14 @@
             <p class="text-center font-bold">ユーザが存在しません</p>
         <?php endif; ?>
     </div>
-    <div class="flex text-center text-sm">
-        <div class="flex-1 py-2 cursor-pointer border-b-2 border-black font-bold">投稿</div><!-- 選択済 -->
-        <div class="flex-1 py-2 cursor-pointer border-b-2 text-gray-600">メニュー</div>
-        <div class="flex-1 py-2 cursor-pointer border-b-2 text-gray-600">アクセス</div>
+    <div class="flex text-center text-sm j-tabs">
+        <div class="flex-1 py-2 cursor-pointer border-b-2 border-black font-bold j-tab" data-tab="POST"><i class="fas fa-archive"></i><span class="pl-1 hidden md:inline">投稿</span></div><!-- 選択済 -->
+        <div class="flex-1 py-2 cursor-pointer border-b-2 text-gray-600 j-tab" data-tab="GOOD"><i class="fas fa-heart"></i><span class="pl-1 hidden md:inline">いいね</span></div><!-- 選択済 -->
+        <div class="flex-1 py-2 cursor-pointer border-b-2 text-gray-600 j-tab" data-tab="MENU"><i class="fas fa-book-open"></i><span class="pl-1 hidden md:inline">メニュー</span></div>
+        <div class="flex-1 py-2 cursor-pointer border-b-2 text-gray-600 j-tab" data-tab="ACCESS"><i class="fas fa-map-marked-alt"></i><span class="pl-1 hidden md:inline">アクセス</span></div>
+        <div class="flex-1 py-2 cursor-pointer border-b-2 text-gray-600 j-tab" data-tab="CONNECTION"><i class="fas fa-link"></i><span class="pl-1 hidden md:inline">関連</span></div>
     </div>
-    <div class="">
+    <div id="POST" class="j-tab-content">
         <div class="p-4 shadow-sm">
             <div class="flex py-1">
                 <div class="flex-grow-0">
@@ -68,16 +89,16 @@
                 </div>
                 <div class="flex-grow-0 px-4 py-2"><i class="fas fa-ellipsis-v"></i></div>
             </div>
-            <div class="text-sm p-1">また行きたいなああああああああああああああああああああああああああああああああああああああああ</div>
+            <div class="text-sm p-1">また行きたいな</div>
             <!-- imageの無いものには生成しない -->
             <div class="p-1 hidden">
                 <!-- image -->
             </div>
             <div class="p-1 flex text-xs text-gray-600">
                 <!-- place -->
-                <div class="w-2/5 truncate"><i class="fas fa-clock"></i><span class="pl-1.5">12月09日 09:00</span></div>
-                <div class="w-2/5 truncate"><i class="fas fa-map-marker-alt"></i><span class="pl-1.5">龍泉閣dddddddddddd</span></div>
-                <div class="w-1/5"><i class="fas fa-heart"></i><span class="pl-1.5">12K</span></div>
+                <div class="w-2/5 truncate"><i class="fas fa-clock"></i><span class="pl-1">12月09日 09:00</span></div>
+                <div class="w-2/5 truncate"><i class="fas fa-map-marker-alt"></i><span class="pl-1">龍泉閣dddddddddddd</span></div>
+                <div class="w-1/5"><i class="fas fa-heart"></i><span class="pl-1">12K</span></div>
             </div>
         </div>
         <div class="p-4 shadow-sm">
@@ -93,16 +114,16 @@
                 </div>
                 <div class="flex-grow-0 px-4 py-2"><i class="fas fa-ellipsis-v"></i></div>
             </div>
-            <div class="text-sm p-1">また行きたいなああああああああああああああああああああああああああああああああああああああああ</div>
+            <div class="text-sm p-1">また行きたいな</div>
             <!-- imageの無いものには生成しない -->
             <div class="p-1 hidden">
                 <!-- image -->
             </div>
             <div class="p-1 flex text-xs text-gray-600">
                 <!-- place -->
-                <div class="w-2/5 truncate"><i class="fas fa-clock"></i><span class="pl-1.5">12月09日 09:00</span></div>
-                <div class="w-2/5 truncate"><i class="fas fa-map-marker-alt"></i><span class="pl-1.5">龍泉閣dddddddddddd</span></div>
-                <div class="w-1/5"><i class="fas fa-heart"></i><span class="pl-1.5">12K</span></div>
+                <div class="w-2/5 truncate"><i class="fas fa-clock"></i><span class="pl-1">12月09日 09:00</span></div>
+                <div class="w-2/5 truncate"><i class="fas fa-map-marker-alt"></i><span class="pl-1">龍泉閣dddddddddddd</span></div>
+                <div class="w-1/5"><i class="fas fa-heart"></i><span class="pl-1">12K</span></div>
             </div>
         </div>
         <div class="p-4 shadow-sm">
@@ -118,16 +139,70 @@
                 </div>
                 <div class="flex-grow-0 px-4 py-2"><i class="fas fa-ellipsis-v"></i></div>
             </div>
-            <div class="text-sm p-1">また行きたいなああああああああああああああああああああああああああああああああああああああああ</div>
+            <div class="text-sm p-1">また行きたいな</div>
             <!-- imageの無いものには生成しない -->
             <div class="p-1 hidden">
                 <!-- image -->
             </div>
             <div class="p-1 flex text-xs text-gray-600">
                 <!-- place -->
-                <div class="w-2/5 truncate"><i class="fas fa-clock"></i><span class="pl-1.5">12月09日 09:00</span></div>
-                <div class="w-2/5 truncate"><i class="fas fa-map-marker-alt"></i><span class="pl-1.5">龍泉閣dddddddddddd</span></div>
-                <div class="w-1/5"><i class="fas fa-heart"></i><span class="pl-1.5">12K</span></div>
+                <div class="w-2/5 truncate"><i class="fas fa-clock"></i><span class="pl-1">12月09日 09:00</span></div>
+                <div class="w-2/5 truncate"><i class="fas fa-map-marker-alt"></i><span class="pl-1">龍泉閣dddddddddddd</span></div>
+                <div class="w-1/5"><i class="fas fa-heart"></i><span class="pl-1">12K</span></div>
+            </div>
+        </div>
+    </div>
+    <div id="GOOD" class="hidden j-tab-content">
+        <div class="p-4 shadow-sm">
+            <div class="flex py-1">
+                <div class="flex-grow-0">
+                    <div class="w-10 border-2 border-green-400 rounded-full">
+                        <img class="w-10 border border-white rounded-full" src="../view/img/kyotoporta.png" alt="ユーザーアイコン">
+                    </div>
+                </div>
+                <div class="flex-grow pl-2 pt-0.5">
+                    <p class="text-sm">st071959</p>
+                    <p class="text-gray-400 text-xs">@st071959</p>
+                </div>
+                <div class="flex-grow-0 px-4 py-2"><i class="fas fa-ellipsis-v"></i></div>
+            </div>
+            <div class="text-sm p-1">また行きたいな</div>
+            <!-- imageの無いものには生成しない -->
+            <div class="p-1 hidden">
+                <!-- image -->
+            </div>
+            <div class="p-1 flex text-xs text-gray-600">
+                <!-- place -->
+                <div class="w-2/5 truncate"><i class="fas fa-clock"></i><span class="pl-1">12月09日 09:00</span></div>
+                <div class="w-2/5 truncate"><i class="fas fa-map-marker-alt"></i><span class="pl-1">龍泉閣dddddddddddd</span></div>
+                <div class="w-1/5"><i class="fas fa-heart"></i><span class="pl-1">12K</span></div>
+            </div>
+        </div>
+    </div>
+    <div id="MENU" class="hidden j-tab-content">
+        <div class="p-4 shadow-sm">
+            <div class="flex py-1">
+                <div class="flex-grow-0">
+                    <div class="w-10 border-2 border-green-400 rounded-full">
+                        <img class="w-10 border border-white rounded-full" src="../view/img/kyotoporta.png" alt="ユーザーアイコン">
+                    </div>
+                </div>
+                <div class="flex-grow pl-2 pt-0.5">
+                    <p class="text-sm">st071959</p>
+                    <p class="text-gray-400 text-xs">@st071959</p>
+                </div>
+                <div class="flex-grow-0 px-4 py-2"><i class="fas fa-ellipsis-v"></i></div>
+            </div>
+            <div class="text-sm p-1">また行きたいな</div>
+            <!-- imageの無いものには生成しない -->
+            <div class="p-1 hidden">
+                <!-- image -->
+            </div>
+            <div class="p-1 flex text-xs text-gray-600">
+                <!-- place -->
+                <div class="w-2/5 truncate"><i class="fas fa-clock"></i><span class="pl-1">12月09日 09:00</span></div>
+                <div class="w-2/5 truncate"><i class="fas fa-map-marker-alt"></i><span class="pl-1">龍泉閣dddddddddddd</span></div>
+                <div class="w-1/5"><i class="fas fa-heart"></i><span class="pl-1">12K</span></div>
             </div>
         </div>
     </div>
@@ -137,7 +212,7 @@
             <a href="/?home" class="flex-1 text-center py-2">
                 <i class="fas fa-home text-green-400 text-xl"></i>
             </a>
-            <a href="/?<?= $_SESSION["userid"] ?>" class="flex-1 text-center py-2">
+            <a href="/?<?= (isset($_SESSION["userid"])) ? $_SESSION["userid"] : 'login' ?>" class="flex-1 text-center py-2">
                 <i class="fas fa-user text-gray-600 text-xl"></i>
             </a>
             <a href="" class="flex-1 text-center py-2">

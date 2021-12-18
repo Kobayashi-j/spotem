@@ -43,7 +43,7 @@
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-key text-gray-500"></i>
                 </span>
-                <input type="text" name="code" inputmode="numeric" pattern="[0-9]{6}" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" placeholder="認証コード" />
+                <input type="text" name="code" inputmode="numeric" pattern="[0-9]{6}" class="w-full py-2 bg-transparent outline-none" placeholder="認証コード" />
                 <span class="px-3 flex items-center invisible j-code-check">
                     <i class="fas fa-check text-gray-500"></i>
                 </span>

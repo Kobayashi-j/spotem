@@ -30,7 +30,7 @@
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-at text-gray-500"></i>
                 </span>
-                <input type="text" name="userid" placeholder="ユーザーID" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" value="<?= isset($_POST["userid"]) ? $_POST["userid"] : '' ?>" required />
+                <input type="text" name="userid" placeholder="ユーザーID" class="w-full py-2 bg-transparent outline-none" value="<?= isset($_POST["userid"]) ? $_POST["userid"] : '' ?>" required />
                 <span class="px-3 flex items-center invisible j-userid-check">
                     <i class="fas fa-check text-gray-500"></i>
                 </span>
@@ -39,7 +39,7 @@
                 <span class="rounded-tl-3xl rounded-bl-3xl px-3 flex items-center">
                     <i class="fas fa-user text-gray-500"></i>
                 </span>
-                <input type="text" name="name" placeholder="名前" class="w-full py-2 rounded-tr-3xl rounded-br-3xl bg-transparent outline-none" value="<?= isset($_POST["name"]) ? $_POST["name"] : '' ?>" required />
+                <input type="text" name="name" placeholder="名前" class="w-full py-2 bg-transparent outline-none" value="<?= isset($_POST["name"]) ? $_POST["name"] : '' ?>" required />
                 <span class="px-3 flex items-center invisible j-name-check">
                     <i class="fas fa-check text-gray-500"></i>
                 </span>

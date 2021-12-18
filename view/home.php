@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../view/css/tailwind.css">
     <script src="../view/js/jquery.js"></script>
     <script src="view/js/home.js" type="module" defer></script>
+    <script src="view/js/side.js" defer></script>
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=<?php //echo $_ENV['MAP_API_KEY'] 
                                                                     ?>&callback=initMap" async></script>-->
 
@@ -31,9 +32,26 @@
             </div>
         </div>
     </div>
-    <div class="w-full h-screen z-30 top-0 fixed bg-opacity-80 bg-white overflow-hidden hidden j-menu-bg">
-        <div class="h-screen bg-white border-r-2 transition duration-1000 overflow-hidden j-menu" style="width: 0;">
-            <a href="/controller/sync/logout.php">ログアウト</a>
+    <!-- サイドメニュー -->
+    <div class="w-full h-screen z-30 top-0 fixed bg-opacity-80 bg-white overflow-hidden hidden j-side-transparent">
+    </div>
+    <div class="fixed top-0 z-50 h-screen bg-white border-r-2 transition duration-1000 overflow-hidden j-side-bg" style="width: 0;">
+        <div class="j-side-menu hidden">
+            <div class="text-right">
+                <button class="px-5 py-2 j-side-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="border-b">&nbsp;<br>&nbsp;<br>&nbsp;<br></div>
+            <ul>
+                <a href="/?<?= $_SESSION["userid"] ?>">
+                    <li class="pl-5 py-3"><i class="fas fa-user mr-2"></i>プロフィール</li>
+                </a>
+                <a href="">
+                    <li class="pl-5 py-3"><i class="fas fa-bookmark mr-2"></i>ブックマーク</li>
+                </a>
+                <a href="/controller/sync/logout.php">
+                    <li class="pl-5 py-3"><i class="fas fa-sign-out-alt mr-2"></i>ログアウト</li>
+                </a>
+            </ul>
         </div>
     </div>
     <!-- 投稿一覧 -->
